@@ -1,0 +1,59 @@
+# Nmap 7.98 scan initiated Fri Apr 17 10:10:03 2026 as: /usr/lib/nmap/nmap -sC -p 21,22,23,80,139,445,1524,3306,3632,6667 -oN /home/kali/project01/scans/script_scan.txt 192.168.56.101
+Nmap scan report for 192.168.56.101
+Host is up (0.0021s latency).
+
+PORT     STATE SERVICE
+21/tcp   open  ftp
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to 192.168.56.1
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      vsFTPd 2.3.4 - secure, fast, stable
+|_End of status
+|_ftp-anon: Anonymous FTP login allowed (FTP code 230)
+22/tcp   open  ssh
+| ssh-hostkey: 
+|   1024 60:0f:cf:e1:c0:5f:6a:74:d6:90:24:fa:c4:d5:6c:cd (DSA)
+|_  2048 56:56:24:0f:21:1d:de:a7:2b:ae:61:b1:24:3d:e8:f3 (RSA)
+23/tcp   open  telnet
+80/tcp   open  http
+|_http-title: Metasploitable2 - Linux
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+1524/tcp open  ingreslock
+3306/tcp open  mysql
+| mysql-info: 
+|   Protocol: 10
+|   Version: 5.0.51a-3ubuntu5
+|   Thread ID: 10
+|   Capabilities flags: 43564
+|   Some Capabilities: Speaks41ProtocolNew, Support41Auth, SupportsCompression, ConnectWithDatabase, SwitchToSSLAfterHandshake, SupportsTransactions, LongColumnFlag
+|   Status: Autocommit
+|_  Salt: YxsV5D5}78RsnMu)iTIS
+3632/tcp open  distccd
+6667/tcp open  irc
+
+Host script results:
+| smb-security-mode: 
+|   account_used: <blank>
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+|_clock-skew: mean: -11h59m33s, deviation: 2h49m43s, median: -13h59m34s
+|_smb2-time: Protocol negotiation failed (SMB2)
+| smb-os-discovery: 
+|   OS: Unix (Samba 3.0.20-Debian)
+|   Computer name: metasploitable
+|   NetBIOS computer name: 
+|   Domain name: localdomain
+|   FQDN: metasploitable.localdomain
+|_  System time: 2026-04-16T20:10:30-04:00
+|_nbstat: NetBIOS name: METASPLOITABLE, NetBIOS user: <unknown>, NetBIOS MAC: <unknown> (unknown)
+
+# Nmap done at Fri Apr 17 10:10:34 2026 -- 1 IP address (1 host up) scanned in 31.04 seconds

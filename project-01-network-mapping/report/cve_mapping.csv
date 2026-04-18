@@ -1,0 +1,12 @@
+Port,Service,Version,CVE,CVSS Score,Severity,Description,Remediation
+21,vsftpd,2.3.4,CVE-2011-2523,10.0,Critical,Backdoor command execution via smiley face in username,Upgrade to vsftpd 3.0.5 or later
+22,OpenSSH,4.7p1,CVE-2008-0166,10.0,Critical,Debian weak key generation - predictable RSA/DSA keys,Upgrade to OpenSSH 8.x and regenerate all keys
+139/445,Samba,3.x,CVE-2007-2447,10.0,Critical,Remote code execution via username map script injection,Upgrade to Samba 4.x
+2121,ProFTPD,1.3.1,CVE-2010-4221,7.5,High,Stack overflow via TELNET IAC - remote code execution,Upgrade to ProFTPD 1.3.7 or later
+6667,UnrealIRCd,3.2.8.1,CVE-2010-2075,10.0,Critical,Backdoor in source distribution - remote command execution,Remove UnrealIRCd or upgrade to 5.x
+3632,distccd,v1,CVE-2004-2687,9.3,High,Arbitrary command execution via malicious compile request,Disable distccd or restrict to trusted IPs only
+80,Apache,2.2.8,CVE-2007-6750,5.0,Medium,Slowloris denial of service attack,Upgrade to Apache 2.4.x
+3306,MySQL,5.0.51a,CVE-2008-0226,7.5,High,Remote root access with empty password,Upgrade MySQL and enforce strong password policy
+1524,bindshell,N/A,N/A,10.0,Critical,Intentional backdoor - raw unauthenticated root shell,Remove immediately - disable port 1524
+23,Telnet,N/A,N/A,8.0,High,Cleartext credential transmission,Disable Telnet entirely - use SSH only
+512-514,rsh/rexec/rlogin,N/A,N/A,8.0,High,Legacy trust-based auth - easily spoofed,Disable all r-services immediately
