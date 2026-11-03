@@ -1,0 +1,291 @@
+{
+  "_comment": "FICTIONAL sample of 'aws iam get-account-authorization-details' output for testing iam-analyzer. Account 111122223333 is the AWS documentation example ID.",
+  "UserDetailList": [
+    {
+      "UserName": "alice-admin",
+      "Arn": "arn:aws:iam::111122223333:user/alice-admin",
+      "GroupList": [],
+      "UserPolicyList": [],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "AdministratorAccess",
+          "PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+        }
+      ]
+    },
+    {
+      "UserName": "dev-intern",
+      "Arn": "arn:aws:iam::111122223333:user/dev-intern",
+      "GroupList": [],
+      "AttachedManagedPolicies": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "read-reports",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": "s3:ListBucket",
+                "Resource": "arn:aws:s3:::acme-reports"
+              },
+              {
+                "Effect": "Allow",
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::acme-reports/*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "ci-deployer",
+      "Arn": "arn:aws:iam::111122223333:user/ci-deployer",
+      "GroupList": [],
+      "AttachedManagedPolicies": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "deploy-app",
+          "PolicyDocument": "%7B%22Version%22%3A%20%222012-10-17%22%2C%20%22Statement%22%3A%20%5B%7B%22Effect%22%3A%20%22Allow%22%2C%20%22Action%22%3A%20%5B%22ec2%3ARunInstances%22%2C%20%22ec2%3ADescribeInstances%22%2C%20%22ec2%3ACreateTags%22%5D%2C%20%22Resource%22%3A%20%22%2A%22%7D%2C%20%7B%22Effect%22%3A%20%22Allow%22%2C%20%22Action%22%3A%20%22iam%3APassRole%22%2C%20%22Resource%22%3A%20%22%2A%22%7D%2C%20%7B%22Effect%22%3A%20%22Allow%22%2C%20%22Action%22%3A%20%22s3%3APutObject%22%2C%20%22Resource%22%3A%20%22arn%3Aaws%3As3%3A%3A%3Aacme-artifacts/%2A%22%7D%5D%7D"
+        }
+      ]
+    },
+    {
+      "UserName": "scoped-deployer",
+      "Arn": "arn:aws:iam::111122223333:user/scoped-deployer",
+      "GroupList": [],
+      "AttachedManagedPolicies": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "deploy-web",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "ec2:RunInstances"
+                ],
+                "Resource": [
+                  "arn:aws:ec2:us-east-1:111122223333:instance/*",
+                  "arn:aws:ec2:us-east-1::image/*",
+                  "arn:aws:ec2:us-east-1:111122223333:subnet/*",
+                  "arn:aws:ec2:us-east-1:111122223333:network-interface/*",
+                  "arn:aws:ec2:us-east-1:111122223333:security-group/*",
+                  "arn:aws:ec2:us-east-1:111122223333:volume/*"
+                ]
+              },
+              {
+                "Effect": "Allow",
+                "Action": "iam:PassRole",
+                "Resource": "arn:aws:iam::111122223333:role/web-app-instance-role",
+                "Condition": {
+                  "StringEquals": {
+                    "iam:PassedToService": "ec2.amazonaws.com"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "UserName": "support-engineer",
+      "Arn": "arn:aws:iam::111122223333:user/support-engineer",
+      "GroupList": [
+        "support"
+      ],
+      "UserPolicyList": [],
+      "AttachedManagedPolicies": []
+    },
+    {
+      "UserName": "data-analyst",
+      "Arn": "arn:aws:iam::111122223333:user/data-analyst",
+      "GroupList": [],
+      "AttachedManagedPolicies": [],
+      "UserPolicyList": [
+        {
+          "PolicyName": "analytics",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "s3:GetObject",
+                  "s3:ListBucket",
+                  "athena:StartQueryExecution",
+                  "athena:GetQueryResults"
+                ],
+                "Resource": "*"
+              },
+              {
+                "Effect": "Allow",
+                "Action": "secretsmanager:GetSecretValue",
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "GroupDetailList": [
+    {
+      "GroupName": "support",
+      "Arn": "arn:aws:iam::111122223333:group/support",
+      "GroupPolicyList": [],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "SupportTools",
+          "PolicyArn": "arn:aws:iam::111122223333:policy/SupportTools"
+        }
+      ]
+    }
+  ],
+  "RoleDetailList": [
+    {
+      "RoleName": "lambda-data-processor",
+      "Arn": "arn:aws:iam::111122223333:role/lambda-data-processor",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "Service": "lambda.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "RolePolicyList": [],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "LambdaDeploy",
+          "PolicyArn": "arn:aws:iam::111122223333:policy/LambdaDeploy"
+        }
+      ]
+    },
+    {
+      "RoleName": "vendor-audit-role",
+      "Arn": "arn:aws:iam::111122223333:role/vendor-audit-role",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": "arn:aws:iam::444455556666:root"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "RolePolicyList": [],
+      "AttachedManagedPolicies": [
+        {
+          "PolicyName": "ReadOnlyAccess",
+          "PolicyArn": "arn:aws:iam::aws:policy/ReadOnlyAccess"
+        }
+      ]
+    },
+    {
+      "RoleName": "legacy-ops",
+      "Arn": "arn:aws:iam::111122223333:role/legacy-ops",
+      "AssumeRolePolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "Service": "ec2.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      },
+      "AttachedManagedPolicies": [],
+      "RolePolicyList": [
+        {
+          "PolicyName": "ops-everything-but-iam",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "NotAction": [
+                  "iam:*",
+                  "organizations:*"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "Policies": [
+    {
+      "PolicyName": "SupportTools",
+      "Arn": "arn:aws:iam::111122223333:policy/SupportTools",
+      "DefaultVersionId": "v2",
+      "PolicyVersionList": [
+        {
+          "VersionId": "v2",
+          "IsDefaultVersion": true,
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "iam:ListPolicies",
+                  "iam:GetPolicy",
+                  "iam:GetPolicyVersion",
+                  "iam:CreatePolicyVersion"
+                ],
+                "Resource": "*"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "PolicyName": "LambdaDeploy",
+      "Arn": "arn:aws:iam::111122223333:policy/LambdaDeploy",
+      "DefaultVersionId": "v1",
+      "PolicyVersionList": [
+        {
+          "VersionId": "v1",
+          "IsDefaultVersion": true,
+          "Document": {
+            "Version": "2012-10-17",
+            "Statement": [
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "lambda:UpdateFunctionCode",
+                  "lambda:GetFunction"
+                ],
+                "Resource": "arn:aws:lambda:us-east-1:111122223333:function:data-processor"
+              },
+              {
+                "Effect": "Allow",
+                "Action": [
+                  "logs:CreateLogStream",
+                  "logs:PutLogEvents"
+                ],
+                "Resource": "arn:aws:logs:us-east-1:111122223333:log-group:/aws/lambda/*"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

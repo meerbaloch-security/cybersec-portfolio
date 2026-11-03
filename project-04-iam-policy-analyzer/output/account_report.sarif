@@ -1,0 +1,423 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "iam-analyzer",
+          "informationUri": "https://github.com/meerbaloch-security/cybersec-portfolio",
+          "rules": [
+            {
+              "id": "IAM-001",
+              "name": "IAM-001",
+              "shortDescription": {
+                "text": "Full administrator access"
+              },
+              "help": {
+                "text": "Replace with least-privilege policies scoped to the services and resources actually used."
+              },
+              "properties": {
+                "security-severity": "9.5"
+              }
+            },
+            {
+              "id": "PE-14",
+              "name": "PE-14",
+              "shortDescription": {
+                "text": "Privilege escalation: Pass a role to a new EC2 instance"
+              },
+              "help": {
+                "text": "Remove these permissions, or scope them to non-privileged resources with a permissions boundary."
+              },
+              "properties": {
+                "security-severity": "9.5"
+              }
+            },
+            {
+              "id": "IAM-005",
+              "name": "IAM-005",
+              "shortDescription": {
+                "text": "iam:PassRole on all roles"
+              },
+              "help": {
+                "text": "Scope Resource to the specific role ARNs and add an iam:PassedToService condition."
+              },
+              "properties": {
+                "security-severity": "8.0"
+              }
+            },
+            {
+              "id": "PE-01",
+              "name": "PE-01",
+              "shortDescription": {
+                "text": "Privilege escalation: Create a new version of a managed policy"
+              },
+              "help": {
+                "text": "Remove these permissions, or scope them to non-privileged resources with a permissions boundary."
+              },
+              "properties": {
+                "security-severity": "9.5"
+              }
+            },
+            {
+              "id": "IAM-006",
+              "name": "IAM-006",
+              "shortDescription": {
+                "text": "Secret and key access (data exfiltration risk)"
+              },
+              "help": {
+                "text": "Scope Resource to specific ARNs and require conditions such as aws:MultiFactorAuthPresent."
+              },
+              "properties": {
+                "security-severity": "8.0"
+              }
+            },
+            {
+              "id": "PE-17",
+              "name": "PE-17",
+              "shortDescription": {
+                "text": "Privilege escalation: Replace the code of an existing Lambda function"
+              },
+              "help": {
+                "text": "Remove these permissions, or scope them to non-privileged resources with a permissions boundary."
+              },
+              "properties": {
+                "security-severity": "5.5"
+              }
+            },
+            {
+              "id": "IAM-008",
+              "name": "IAM-008",
+              "shortDescription": {
+                "text": "Role trusts an entire account"
+              },
+              "help": {
+                "text": "Trust a specific role ARN, or add conditions (sts:ExternalId, aws:PrincipalArn)."
+              },
+              "properties": {
+                "security-severity": "5.5"
+              }
+            },
+            {
+              "id": "PE-21",
+              "name": "PE-21",
+              "shortDescription": {
+                "text": "Privilege escalation: Run commands on EC2 instances through SSM"
+              },
+              "help": {
+                "text": "Remove these permissions, or scope them to non-privileged resources with a permissions boundary."
+              },
+              "properties": {
+                "security-severity": "9.5"
+              }
+            },
+            {
+              "id": "IAM-002",
+              "name": "IAM-002",
+              "shortDescription": {
+                "text": "Allow with NotAction"
+              },
+              "help": {
+                "text": "Use an explicit Action list instead of NotAction with Allow."
+              },
+              "properties": {
+                "security-severity": "8.0"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "IAM-001",
+          "level": "error",
+          "message": {
+            "text": "user alice-admin: Full administrator access. Allows every action on every resource (\"Action\": \"*\" or equivalent NotAction)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PE-14",
+          "level": "error",
+          "message": {
+            "text": "user ci-deployer: Privilege escalation: Pass a role to a new EC2 instance. Can launch an instance with a privileged role and use that role's credentials from the instance."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "IAM-005",
+          "level": "error",
+          "message": {
+            "text": "user ci-deployer: iam:PassRole on all roles. Can hand any role, including admin roles, to AWS services."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PE-14",
+          "level": "warning",
+          "message": {
+            "text": "user scoped-deployer: Privilege escalation: Pass a role to a new EC2 instance. Can launch an instance with a privileged role and use that role's credentials from the instance. Permissions are scoped to specific resources, so confirm whether those resources are privileged."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PE-01",
+          "level": "error",
+          "message": {
+            "text": "user support-engineer: Privilege escalation: Create a new version of a managed policy. Can publish a new default version of a policy attached to itself containing \"Action\": \"*\"."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "IAM-006",
+          "level": "error",
+          "message": {
+            "text": "user data-analyst: Secret and key access (data exfiltration risk). Allowed on all resources: secretsmanager:GetSecretValue"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "IAM-006",
+          "level": "warning",
+          "message": {
+            "text": "user data-analyst: Broad data read access. Allowed on all resources: s3:GetObject"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PE-17",
+          "level": "warning",
+          "message": {
+            "text": "role lambda-data-processor: Privilege escalation: Replace the code of an existing Lambda function. Can change the code of a function that already runs with a privileged role. Permissions are scoped to specific resources, so confirm whether those resources are privileged."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "IAM-008",
+          "level": "warning",
+          "message": {
+            "text": "role vendor-audit-role: Role trusts an entire account. Any principal with sts:AssumeRole in arn:aws:iam::444455556666:root can assume this role."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PE-17",
+          "level": "error",
+          "message": {
+            "text": "role legacy-ops: Privilege escalation: Replace the code of an existing Lambda function. Can change the code of a function that already runs with a privileged role."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "PE-21",
+          "level": "error",
+          "message": {
+            "text": "role legacy-ops: Privilege escalation: Run commands on EC2 instances through SSM. Can run commands on instances and use their instance-profile roles."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "IAM-002",
+          "level": "error",
+          "message": {
+            "text": "role legacy-ops: Allow with NotAction. Grants everything except ['iam:*', 'organizations:*']; new AWS services are allowed automatically."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "IAM-006",
+          "level": "error",
+          "message": {
+            "text": "role legacy-ops: Defense evasion (disables security logging or detection). Allowed on all resources: cloudtrail:StopLogging, cloudtrail:DeleteTrail, cloudtrail:UpdateTrail, guardduty:DeleteDetector, guardduty:UpdateDetector, config:StopConfigurationRecorder, config:DeleteConfigurationRecorder, securityhub:DisableSecurityHub, logs:DeleteLogGroup"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "IAM-006",
+          "level": "error",
+          "message": {
+            "text": "role legacy-ops: Secret and key access (data exfiltration risk). Allowed on all resources: secretsmanager:GetSecretValue, kms:Decrypt, ssm:GetParameter, ssm:GetParameters, ssm:GetParametersByPath"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "IAM-006",
+          "level": "error",
+          "message": {
+            "text": "role legacy-ops: Resource policy changes (can expose data publicly). Allowed on all resources: s3:PutBucketPolicy, s3:PutBucketAcl, s3:DeleteBucketPolicy, s3:PutBucketPublicAccessBlock, kms:PutKeyPolicy, lambda:AddPermission, sns:SetTopicAttributes, sqs:SetQueueAttributes"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "IAM-006",
+          "level": "warning",
+          "message": {
+            "text": "role legacy-ops: Broad data read access. Allowed on all resources: s3:GetObject, dynamodb:Scan, dynamodb:GetItem, rds:DownloadDBLogFilePortion"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "IAM-006",
+          "level": "warning",
+          "message": {
+            "text": "role legacy-ops: Destructive actions. Allowed on all resources: s3:DeleteBucket, s3:DeleteObject, rds:DeleteDBInstance, ec2:TerminateInstances, dynamodb:DeleteTable, kms:ScheduleKeyDeletion"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "IAM-006",
+          "level": "warning",
+          "message": {
+            "text": "role legacy-ops: Network exposure. Allowed on all resources: ec2:AuthorizeSecurityGroupIngress, ec2:ModifyInstanceAttribute"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "account_authorization_details.json"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
