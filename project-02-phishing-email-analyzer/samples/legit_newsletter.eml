@@ -1,0 +1,28 @@
+Return-Path: <news@example.org>
+Received: from mail.example.org ([192.0.2.10]) by mx.example.com; Mon, 2 Nov
+ 2026 08:00:00 +0000
+Authentication-Results: mx.example.com; spf=pass smtp.mailfrom=example.org;
+ dkim=pass header.d=example.org; dmarc=pass
+From: "Example Org Newsletter" <news@example.org>
+To: reader@example.com
+Subject: November community update
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============3025531883725523133=="
+
+--===============3025531883725523133==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi! Here is our monthly update. Read more at https://www.example.org/blog/nov=
+ember
+
+--===============3025531883725523133==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<p>Hi! Read our <a href=3D"https://www.example.org/blog/november">November up=
+date</a>.</p>
+
+--===============3025531883725523133==--

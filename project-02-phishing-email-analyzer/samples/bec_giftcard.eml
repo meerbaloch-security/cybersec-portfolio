@@ -1,0 +1,16 @@
+Return-Path: <ceo.office.private@outlook.com>
+Received: from outlook.com ([192.0.2.77]) by mx.example.com; Mon, 2 Nov 2026
+ 13:02:44 +0000
+Authentication-Results: mx.example.com; spf=pass smtp.mailfrom=outlook.com;
+ dkim=pass header.d=outlook.com; dmarc=pass
+From:
+ "Sarah Chen (CEO) sarah.chen@example.com" <ceo.office.private@outlook.com>
+Reply-To: ceo.office.private@outlook.com
+To: assistant@example.com
+Subject: Quick favour - confidential
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Are you at your desk? I need you to buy 5 gift cards for a client today, it's=
+ urgent. Reply with the codes. Don't call, I'm in a meeting.

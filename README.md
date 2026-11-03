@@ -4,7 +4,7 @@ Welcome to my cybersecurity portfolio. This repository documents practical, auth
 
 My work is evidence-driven: each completed project includes the lab design, implementation process, validation steps, technical findings, screenshots, and lessons learned.
 
-## Completed Project
+## Completed Projects
 
 ### [Project 01 — Enterprise Active Directory Detection Lab](project-01-enterprise-ad-detection-lab/)
 
@@ -39,6 +39,23 @@ Configure telemetry → Generate controlled activity → Investigate events → 
 
 [View the complete project documentation and evidence →](project-01-enterprise-ad-detection-lab/)
 
+### [Project 02 — Phishing Email Analyzer](project-02-phishing-email-analyzer/)
+
+> **Status:** Complete
+
+An offline Python tool that triages suspicious `.eml` files and produces an analyst-style report with a verdict, a 0–100 risk score and recommended actions. It never opens links or runs attachments, so it is safe to use on live samples.
+
+### Key Results
+
+- Parses SPF, DKIM and DMARC results and flags spoofed senders, Reply-To mismatches and display-name impersonation
+- Detects look-alike domains (typosquats, brand keywords, punycode), link-text/destination mismatches, raw-IP links and URL shorteners
+- Flags dangerous attachments (double extensions, executables, macro-enabled Office files) and records SHA-256 hashes for threat-intel lookups
+- Identifies business email compromise patterns such as gift-card and secrecy requests from free webmail
+- Correctly classified all 4 fabricated test samples, including a BEC email that passed SPF, DKIM and DMARC
+- Unit tests run automatically in GitHub Actions on every change
+
+[View the project code and documentation →](project-02-phishing-email-analyzer/)
+
 ## Skills Demonstrated
 
 - Active Directory Domain Services and DNS administration
@@ -52,6 +69,8 @@ Configure telemetry → Generate controlled activity → Investigate events → 
 - Authorized Nmap reconnaissance and SMB security validation
 - False-positive analysis and investigation planning
 - Security evidence collection and technical documentation
+- Email security analysis (SPF, DKIM, DMARC, phishing and BEC indicators)
+- Python security tooling, unit testing and GitHub Actions CI
 
 ## Portfolio Direction
 
