@@ -1,0 +1,25 @@
+title: Large Outbound Data Transfer to the Internet
+name: large_outbound_transfer
+id: d4f3d376-5067-4856-b439-dd3dd7b145f6
+status: test
+description: Firewall recorded more than 1 GB sent from an internal host to an external address in one session.
+author: Project 07 (SOC Investigation Simulator)
+date: 2026-11-03
+tags:
+    - attack.exfiltration
+    - attack.t1048
+logsource:
+    product: firewall
+detection:
+    selection:
+        bytes_out|gte: 1000000000
+    filter_internal:
+        dst_ip|cidr:
+            - '10.0.0.0/8'
+            - '172.16.0.0/12'
+            - '192.168.0.0/16'
+    condition: selection and not filter_internal
+falsepositives:
+    - Backups and large uploads to approved cloud storage
+level: high
+risk_score: 45

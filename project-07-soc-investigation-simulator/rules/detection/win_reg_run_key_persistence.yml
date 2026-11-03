@@ -1,0 +1,27 @@
+title: Registry Run Key Modified for Persistence
+name: run_key_persistence
+id: 7b36e1ba-b496-4e4d-8e06-b8defffa6d8b
+status: test
+description: Detects values written under the CurrentVersion Run or RunOnce keys, which start a program at every logon. Tuned version (v2) of a naive rule that matched any key containing \Run.
+author: Project 07 (SOC Investigation Simulator)
+date: 2026-11-03
+tags:
+    - attack.persistence
+    - attack.t1547.001
+logsource:
+    product: windows
+    category: registry_set
+detection:
+    selection:
+        TargetObject|contains:
+            - '\CurrentVersion\Run\'
+            - '\CurrentVersion\RunOnce\'
+    filter_installers:
+        Image|endswith:
+            - '\msiexec.exe'
+            - '\OneDriveSetup.exe'
+    condition: selection and not filter_installers
+falsepositives:
+    - Legitimate software that starts at logon (review the value being written)
+level: high
+risk_score: 50

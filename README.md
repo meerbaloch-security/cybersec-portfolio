@@ -126,6 +126,25 @@ Builds a graph of a cloud environment and finds how an attacker could chain smal
 
 [View the project code, interactive report and documentation →](project-06-attack-path-analyzer/)
 
+### [Project 07 — SOC Investigation & Response Simulator](project-07-soc-investigation-simulator/)
+
+> **Status:** Complete
+
+A miniature SOC that takes raw telemetry all the way to an incident report: Sigma detection rules, Sigma correlation rules, entity-based incident grouping, context checks, an honest verdict and a report for Tier 2. Tested on real attack telemetry as well as a labelled scenario day.
+
+![SOC investigation console](project-07-soc-investigation-simulator/docs/console.png)
+
+### Key Results
+
+- Validated on 3,504 real Windows events from OTRF Security-Datasets: 6/6 expected detections, 0 false positives, 0 missed
+- Tuned a Run-key persistence rule that produced 4 false positives on real data (`lsass.exe` writing `...\RunTime` registry values) down to 0
+- Found and handled a real data-quality issue: Sysmon timestamps 16 hours off the record time, fixed by de-duplicating Sysmon 1 / Security 4688 on process ID
+- Scenario day: 18 alerts correlated into 7 incidents with 7/7 correct verdicts (2 true positives, 4 benign false-positive traps closed with justification, 1 honestly inconclusive)
+- Evidence-based triage: change-ticket and allowlist matching, threat-intel enrichment, decoded PowerShell, "impossible concurrency" detection, phishing scope analysis
+- Interactive analyst console, Markdown incident reports, 21 unit tests and a CI gate on verdict and detection accuracy
+
+[View the project code, analyst console and incident reports →](project-07-soc-investigation-simulator/)
+
 ## Skills Demonstrated
 
 - Active Directory Domain Services and DNS administration
@@ -145,6 +164,7 @@ Builds a graph of a cloud environment and finds how an attacker could chain smal
 - Cloud security: AWS IAM policy evaluation and privilege-escalation analysis
 - Vulnerability management: risk-based prioritization with CVSS, EPSS and CISA KEV
 - Attack path analysis: graph modelling, choke-point remediation planning and MITRE ATT&CK mapping
+- SOC triage and incident response: Sigma and Sigma correlation rules, alert correlation, verdicts with confidence, incident reporting
 
 ## Portfolio Direction
 

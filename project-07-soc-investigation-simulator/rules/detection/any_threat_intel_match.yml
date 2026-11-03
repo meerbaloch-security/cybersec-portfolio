@@ -1,0 +1,19 @@
+title: Connection Involving a Threat Intelligence Indicator
+name: threat_intel_match
+id: f0b0acd4-640b-4790-9ff3-ccb7cdd7658c
+status: test
+description: An event references an IP or domain listed in the threat-intelligence feed (IOC list produced by Project 03 ioc-extractor).
+author: Project 07 (SOC Investigation Simulator)
+date: 2026-11-03
+tags:
+    - attack.command-and-control
+    - attack.t1071
+detection:
+    selection:
+        ti_match: true
+    condition: selection
+falsepositives:
+    - Stale indicators (shared hosting, re-used IP addresses)
+level: high
+risk_score: 50
+logsource: {}

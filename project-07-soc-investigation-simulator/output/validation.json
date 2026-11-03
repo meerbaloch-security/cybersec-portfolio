@@ -1,0 +1,645 @@
+{
+  "datasets": [
+    {
+      "name": "empire_persistence_registry_modification_run_keys_elevated_user",
+      "events": 657,
+      "technique": "T1547.001 Run key persistence",
+      "hosts": [
+        "MORDORDC.mordor.local",
+        "WORKSTATION5.mordor.local",
+        "WORKSTATION6.mordor.local"
+      ]
+    },
+    {
+      "name": "empire_shell_net_localgroup_administrators",
+      "events": 884,
+      "technique": "T1069.001 Local group discovery",
+      "hosts": [
+        "MORDORDC.theshire.local",
+        "WORKSTATION5.theshire.local",
+        "WORKSTATION6.theshire.local"
+      ]
+    },
+    {
+      "name": "empire_shell_reg_dump_sam",
+      "events": 738,
+      "technique": "T1003.002 SAM hive export",
+      "hosts": [
+        "MORDORDC.theshire.local",
+        "WORKSTATION5.theshire.local",
+        "WORKSTATION6.theshire.local"
+      ]
+    },
+    {
+      "name": "psh_lsass_memory_dump_comsvcs",
+      "events": 184,
+      "technique": "T1003.001 LSASS memory dump",
+      "hosts": [
+        "WORKSTATION5"
+      ]
+    },
+    {
+      "name": "schtask_create",
+      "events": 1041,
+      "technique": "T1053.005 Scheduled task",
+      "hosts": [
+        "WORKSTATION5.theshire.local",
+        "WORKSTATION6.theshire.local"
+      ]
+    }
+  ],
+  "total_events": 3504,
+  "cells": [
+    {
+      "rule": "threat_intel_match",
+      "dataset": "empire_persistence_registry_modification_run_keys_elevated_user",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "phish_delivered",
+      "dataset": "empire_persistence_registry_modification_run_keys_elevated_user",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "large_outbound_transfer",
+      "dataset": "empire_persistence_registry_modification_run_keys_elevated_user",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "proxy_risky_category",
+      "dataset": "empire_persistence_registry_modification_run_keys_elevated_user",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "lsass_process_access",
+      "dataset": "empire_persistence_registry_modification_run_keys_elevated_user",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "lsass_dump_comsvcs",
+      "dataset": "empire_persistence_registry_modification_run_keys_elevated_user",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "net_localgroup_admins",
+      "dataset": "empire_persistence_registry_modification_run_keys_elevated_user",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "powershell_encoded_command",
+      "dataset": "empire_persistence_registry_modification_run_keys_elevated_user",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "reg_save_sensitive_hive",
+      "dataset": "empire_persistence_registry_modification_run_keys_elevated_user",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "schtasks_create_from_shell",
+      "dataset": "empire_persistence_registry_modification_run_keys_elevated_user",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "run_key_persistence",
+      "dataset": "empire_persistence_registry_modification_run_keys_elevated_user",
+      "alerts": 1,
+      "expected": true,
+      "samples": [
+        "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\Updater"
+      ],
+      "kind": "TP"
+    },
+    {
+      "rule": "privileged_group_member_added",
+      "dataset": "empire_persistence_registry_modification_run_keys_elevated_user",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "run_key_naive",
+      "dataset": "empire_persistence_registry_modification_run_keys_elevated_user",
+      "alerts": 1,
+      "expected": true,
+      "samples": [
+        "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\Updater"
+      ],
+      "kind": "TP"
+    },
+    {
+      "rule": "threat_intel_match",
+      "dataset": "empire_shell_net_localgroup_administrators",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "phish_delivered",
+      "dataset": "empire_shell_net_localgroup_administrators",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "large_outbound_transfer",
+      "dataset": "empire_shell_net_localgroup_administrators",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "proxy_risky_category",
+      "dataset": "empire_shell_net_localgroup_administrators",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "lsass_process_access",
+      "dataset": "empire_shell_net_localgroup_administrators",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "lsass_dump_comsvcs",
+      "dataset": "empire_shell_net_localgroup_administrators",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "net_localgroup_admins",
+      "dataset": "empire_shell_net_localgroup_administrators",
+      "alerts": 2,
+      "expected": true,
+      "samples": [
+        "\"C:\\windows\\system32\\net.exe\" localgroup Administrators",
+        "C:\\windows\\system32\\net1 localgroup Administrators"
+      ],
+      "kind": "TP"
+    },
+    {
+      "rule": "powershell_encoded_command",
+      "dataset": "empire_shell_net_localgroup_administrators",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "reg_save_sensitive_hive",
+      "dataset": "empire_shell_net_localgroup_administrators",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "schtasks_create_from_shell",
+      "dataset": "empire_shell_net_localgroup_administrators",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "run_key_persistence",
+      "dataset": "empire_shell_net_localgroup_administrators",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "privileged_group_member_added",
+      "dataset": "empire_shell_net_localgroup_administrators",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "run_key_naive",
+      "dataset": "empire_shell_net_localgroup_administrators",
+      "alerts": 2,
+      "expected": false,
+      "samples": [
+        "HKLM\\System\\CurrentControlSet\\Services\\W32Time\\SecureTimeLimits\\RunTime\\SecureTimeTickCount",
+        "HKLM\\System\\CurrentControlSet\\Services\\W32Time\\SecureTimeLimits\\RunTime\\SecureTimeConfidence"
+      ],
+      "kind": "FP"
+    },
+    {
+      "rule": "threat_intel_match",
+      "dataset": "empire_shell_reg_dump_sam",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "phish_delivered",
+      "dataset": "empire_shell_reg_dump_sam",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "large_outbound_transfer",
+      "dataset": "empire_shell_reg_dump_sam",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "proxy_risky_category",
+      "dataset": "empire_shell_reg_dump_sam",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "lsass_process_access",
+      "dataset": "empire_shell_reg_dump_sam",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "lsass_dump_comsvcs",
+      "dataset": "empire_shell_reg_dump_sam",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "net_localgroup_admins",
+      "dataset": "empire_shell_reg_dump_sam",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "powershell_encoded_command",
+      "dataset": "empire_shell_reg_dump_sam",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "reg_save_sensitive_hive",
+      "dataset": "empire_shell_reg_dump_sam",
+      "alerts": 1,
+      "expected": true,
+      "samples": [
+        "\"C:\\windows\\system32\\reg.exe\" save HKLM\\sam sam"
+      ],
+      "kind": "TP"
+    },
+    {
+      "rule": "schtasks_create_from_shell",
+      "dataset": "empire_shell_reg_dump_sam",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "run_key_persistence",
+      "dataset": "empire_shell_reg_dump_sam",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "privileged_group_member_added",
+      "dataset": "empire_shell_reg_dump_sam",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "run_key_naive",
+      "dataset": "empire_shell_reg_dump_sam",
+      "alerts": 2,
+      "expected": false,
+      "samples": [
+        "HKLM\\System\\CurrentControlSet\\Services\\W32Time\\SecureTimeLimits\\RunTime\\SecureTimeTickCount",
+        "HKLM\\System\\CurrentControlSet\\Services\\W32Time\\SecureTimeLimits\\RunTime\\SecureTimeConfidence"
+      ],
+      "kind": "FP"
+    },
+    {
+      "rule": "threat_intel_match",
+      "dataset": "psh_lsass_memory_dump_comsvcs",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "phish_delivered",
+      "dataset": "psh_lsass_memory_dump_comsvcs",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "large_outbound_transfer",
+      "dataset": "psh_lsass_memory_dump_comsvcs",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "proxy_risky_category",
+      "dataset": "psh_lsass_memory_dump_comsvcs",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "lsass_process_access",
+      "dataset": "psh_lsass_memory_dump_comsvcs",
+      "alerts": 1,
+      "expected": true,
+      "samples": [
+        "C:\\Windows\\System32\\rundll32.exe -> C:\\windows\\system32\\lsass.exe"
+      ],
+      "kind": "TP"
+    },
+    {
+      "rule": "lsass_dump_comsvcs",
+      "dataset": "psh_lsass_memory_dump_comsvcs",
+      "alerts": 1,
+      "expected": true,
+      "samples": [
+        "\"C:\\Windows\\System32\\rundll32.exe\" C:\\windows\\System32\\comsvcs.dll MiniDump 756 C:\\Users\\wardog\\AppData\\Local\\Temp\\lsass-comsvcs.dmp full"
+      ],
+      "kind": "TP"
+    },
+    {
+      "rule": "net_localgroup_admins",
+      "dataset": "psh_lsass_memory_dump_comsvcs",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "powershell_encoded_command",
+      "dataset": "psh_lsass_memory_dump_comsvcs",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "reg_save_sensitive_hive",
+      "dataset": "psh_lsass_memory_dump_comsvcs",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "schtasks_create_from_shell",
+      "dataset": "psh_lsass_memory_dump_comsvcs",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "run_key_persistence",
+      "dataset": "psh_lsass_memory_dump_comsvcs",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "privileged_group_member_added",
+      "dataset": "psh_lsass_memory_dump_comsvcs",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "run_key_naive",
+      "dataset": "psh_lsass_memory_dump_comsvcs",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "threat_intel_match",
+      "dataset": "schtask_create",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "phish_delivered",
+      "dataset": "schtask_create",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "large_outbound_transfer",
+      "dataset": "schtask_create",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "proxy_risky_category",
+      "dataset": "schtask_create",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "lsass_process_access",
+      "dataset": "schtask_create",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "lsass_dump_comsvcs",
+      "dataset": "schtask_create",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "net_localgroup_admins",
+      "dataset": "schtask_create",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "powershell_encoded_command",
+      "dataset": "schtask_create",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "reg_save_sensitive_hive",
+      "dataset": "schtask_create",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "schtasks_create_from_shell",
+      "dataset": "schtask_create",
+      "alerts": 1,
+      "expected": true,
+      "samples": [
+        "schtasks  /create /F /tn \\Microsoft\\Windows\\SoftwareProtectionPlatform\\EventCacheManager /tr \"C:\\Windows\\system32\\cmd.exe /C C:\\Windows\\Syst"
+      ],
+      "kind": "TP"
+    },
+    {
+      "rule": "run_key_persistence",
+      "dataset": "schtask_create",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "privileged_group_member_added",
+      "dataset": "schtask_create",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    },
+    {
+      "rule": "run_key_naive",
+      "dataset": "schtask_create",
+      "alerts": 0,
+      "expected": false,
+      "samples": [],
+      "kind": "TN"
+    }
+  ],
+  "rules": [
+    "threat_intel_match",
+    "phish_delivered",
+    "large_outbound_transfer",
+    "proxy_risky_category",
+    "lsass_process_access",
+    "lsass_dump_comsvcs",
+    "net_localgroup_admins",
+    "powershell_encoded_command",
+    "reg_save_sensitive_hive",
+    "schtasks_create_from_shell",
+    "run_key_persistence",
+    "privileged_group_member_added",
+    "run_key_naive"
+  ],
+  "status": {
+    "threat_intel_match": "test",
+    "phish_delivered": "test",
+    "large_outbound_transfer": "test",
+    "proxy_risky_category": "test",
+    "lsass_process_access": "test",
+    "lsass_dump_comsvcs": "test",
+    "net_localgroup_admins": "test",
+    "powershell_encoded_command": "test",
+    "reg_save_sensitive_hive": "test",
+    "schtasks_create_from_shell": "test",
+    "run_key_persistence": "test",
+    "privileged_group_member_added": "test",
+    "failed_logon": "stable",
+    "successful_remote_logon": "stable",
+    "run_key_naive": "deprecated"
+  },
+  "active": {
+    "detected": 6,
+    "expected": 6,
+    "false_positive_alerts": 0,
+    "missed": 0
+  },
+  "naive_run_key": {
+    "detected": 1,
+    "expected": 1,
+    "false_positive_alerts": 4,
+    "missed": 0
+  },
+  "tuned_run_key": {
+    "detected": 1,
+    "expected": 1,
+    "false_positive_alerts": 0,
+    "missed": 0
+  }
+}

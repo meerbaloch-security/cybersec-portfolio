@@ -1,0 +1,28 @@
+title: Scheduled Task Created from a Shell
+name: schtasks_create_from_shell
+id: 1440f53e-9150-440b-a07d-f0b8ecde998f
+status: test
+description: Detects schtasks.exe /create launched from cmd.exe or PowerShell. Attackers use scheduled tasks for persistence and lateral movement.
+author: Project 07 (SOC Investigation Simulator)
+date: 2026-11-03
+tags:
+    - attack.persistence
+    - attack.execution
+    - attack.t1053.005
+logsource:
+    product: windows
+    category: process_creation
+detection:
+    selection:
+        Image|endswith: '\schtasks.exe'
+        CommandLine|contains|windash: '/create'
+    selection_parent:
+        ParentImage|endswith:
+            - '\cmd.exe'
+            - '\powershell.exe'
+            - '\pwsh.exe'
+    condition: selection and selection_parent
+falsepositives:
+    - Software installers and IT automation that register tasks from a shell
+level: medium
+risk_score: 30

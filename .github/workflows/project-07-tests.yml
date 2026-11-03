@@ -1,0 +1,29 @@
+name: project-07 soc-sim
+
+on:
+  push:
+    paths: ["project-07-soc-investigation-simulator/**", ".github/workflows/project-07-tests.yml"]
+  pull_request:
+    paths: ["project-07-soc-investigation-simulator/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    defaults:
+      run:
+        working-directory: project-07-soc-investigation-simulator
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -r requirements.txt
+      - run: python -m unittest discover -s tests -v
+      - name: Validate rules on real data and investigate scenarios
+        run: python soc_sim.py all -o /tmp/out

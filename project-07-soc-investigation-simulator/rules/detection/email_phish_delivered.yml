@@ -1,0 +1,21 @@
+title: High-Risk Email Delivered to a Mailbox
+name: phish_delivered
+id: 8df67ce5-5965-4af2-84b3-a0ed10295905
+status: test
+description: Email gateway delivered a message that the phishing analyzer (Project 02) scored as malicious.
+author: Project 07 (SOC Investigation Simulator)
+date: 2026-11-03
+tags:
+    - attack.initial-access
+    - attack.t1566.002
+logsource:
+    product: email_gateway
+detection:
+    selection:
+        action: delivered
+        phish_score|gte: 60
+    condition: selection
+falsepositives:
+    - Marketing emails with aggressive tracking links
+level: high
+risk_score: 40

@@ -1,0 +1,34 @@
+title: Suspicious Process Access to LSASS
+name: lsass_process_access
+id: 4beafe50-e894-4de7-b494-93422a68b2ea
+status: test
+description: Detects a process opening LSASS with access rights commonly used for memory dumping (Sysmon event 10), excluding known security and system processes.
+author: Project 07 (SOC Investigation Simulator)
+date: 2026-11-03
+tags:
+    - attack.credential-access
+    - attack.t1003.001
+logsource:
+    product: windows
+    category: process_access
+detection:
+    selection:
+        TargetImage|endswith: '\lsass.exe'
+        GrantedAccess:
+            - '0x1010'
+            - '0x1410'
+            - '0x1438'
+            - '0x143a'
+            - '0x1fffff'
+    filter_system:
+        SourceImage|endswith:
+            - '\MsMpEng.exe'
+            - '\wininit.exe'
+            - '\csrss.exe'
+            - '\svchost.exe'
+            - '\lsm.exe'
+    condition: selection and not filter_system
+falsepositives:
+    - EDR and backup agents not in the filter list
+level: high
+risk_score: 70

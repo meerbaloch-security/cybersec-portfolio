@@ -1,0 +1,22 @@
+title: Brute-Force Logon Attempts Against One Account
+name: bruteforce_attempts
+id: 9eb672be-d978-44df-9b36-a02693dfaa32
+status: test
+description: 10 or more failed logons for the same account from the same source IP within 10 minutes.
+author: Project 07 (SOC Investigation Simulator)
+date: 2026-11-03
+correlation:
+    type: event_count
+    rules:
+        - failed_logon
+    group-by:
+        - TargetUserName
+        - IpAddress
+    timespan: 10m
+    condition:
+        gte: 10
+tags:
+    - attack.credential-access
+    - attack.t1110.001
+level: medium
+risk_score: 25

@@ -1,0 +1,81 @@
+{
+  "_comment": "What the SOC knows about the environment. Used by the incident engine to explain alerts.",
+  "company": "Harbor & Pine Logistics (fictional)",
+  "change_tickets": [
+    {
+      "id": "CHG-1042",
+      "summary": "Weekly service health report via RMM (encoded script)",
+      "approved_by": "IT Ops manager",
+      "hosts": [
+        "SRV-MGMT-01"
+      ],
+      "users": [
+        "svc-itops"
+      ],
+      "rules": [
+        "powershell_encoded_command"
+      ],
+      "start": "2026-10-27T10:30:00Z",
+      "end": "2026-10-27T12:00:00Z"
+    },
+    {
+      "id": "CHG-2231",
+      "summary": "Temporary local admin for Maria Garcia to install shipping-label printer drivers",
+      "approved_by": "IT Service Desk lead",
+      "hosts": [
+        "WS-MGARCIA-04"
+      ],
+      "users": [
+        "k.ross"
+      ],
+      "rules": [
+        "privileged_group_member_added"
+      ],
+      "start": "2026-10-27T13:00:00Z",
+      "end": "2026-10-27T14:00:00Z"
+    }
+  ],
+  "scanners": [
+    {
+      "ip": "10.0.9.50",
+      "name": "SCANNER-01 (authorised vulnerability scanner, weekly Tue 07:30)"
+    }
+  ],
+  "backup_routes": [
+    {
+      "host": "SRV-BACKUP-01",
+      "dst_ip": "192.0.2.200",
+      "name": "Off-site backup provider"
+    }
+  ],
+  "assets": {
+    "SRV-RDS-01": {
+      "criticality": "high",
+      "role": "Internet-facing Remote Desktop server"
+    },
+    "SRV-MAIL-01": {
+      "criticality": "high",
+      "role": "Webmail server"
+    },
+    "DC01": {
+      "criticality": "critical",
+      "role": "Domain controller"
+    },
+    "SRV-MGMT-01": {
+      "criticality": "high",
+      "role": "IT management server"
+    },
+    "SRV-BACKUP-01": {
+      "criticality": "high",
+      "role": "Backup server"
+    }
+  },
+  "privileged_users": [
+    "svc-itops",
+    "k.ross"
+  ],
+  "business_hours_utc": [
+    7,
+    18
+  ]
+}

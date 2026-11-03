@@ -1,0 +1,21 @@
+title: Registry Run Key Modified (naive v1, deprecated)
+name: run_key_naive
+id: ff62dfb7-af47-4c9a-905d-2559c894821b
+status: deprecated
+description: First version of the Run-key rule. Kept to document tuning. It matches any registry path containing \Run, which on real data also matched lsass.exe writing W32Time\SecureTimeLimits\RunTime values.
+author: Project 07 (SOC Investigation Simulator)
+date: 2026-11-03
+tags:
+    - attack.persistence
+    - attack.t1547.001
+logsource:
+    product: windows
+    category: registry_set
+detection:
+    selection:
+        TargetObject|contains: '\Run'
+    condition: selection
+falsepositives:
+    - Many. Replaced by run_key_persistence.
+level: high
+risk_score: 50

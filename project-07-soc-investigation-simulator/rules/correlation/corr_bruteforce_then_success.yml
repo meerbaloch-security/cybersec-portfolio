@@ -1,0 +1,23 @@
+title: Successful Logon After Brute Force
+name: bruteforce_success
+id: fa597e0c-2bb0-412b-ae1d-f30cb06f23c7
+status: test
+description: A brute-force correlation for an account is followed by a successful logon for the same account from the same IP within 30 minutes. Likely credential compromise.
+author: Project 07 (SOC Investigation Simulator)
+date: 2026-11-03
+correlation:
+    type: temporal_ordered
+    rules:
+        - bruteforce_attempts
+        - successful_remote_logon
+    group-by:
+        - TargetUserName
+        - IpAddress
+    timespan: 30m
+tags:
+    - attack.credential-access
+    - attack.initial-access
+    - attack.t1110.001
+    - attack.t1078
+level: critical
+risk_score: 80

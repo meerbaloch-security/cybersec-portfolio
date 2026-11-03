@@ -1,0 +1,24 @@
+title: Successful Network or Remote Logon (building block)
+name: successful_remote_logon
+id: 0ddba2a6-a9c7-458f-a3a7-c13744006797
+status: stable
+description: A successful network (3) or remote interactive (10) logon. Used by correlation rules.
+author: Project 07 (SOC Investigation Simulator)
+date: 2026-11-03
+tags:
+    - attack.initial-access
+    - attack.t1078
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4624
+        LogonType:
+            - 3
+            - 10
+    condition: selection
+falsepositives:
+    - Normal remote work
+level: informational
+building_block: true

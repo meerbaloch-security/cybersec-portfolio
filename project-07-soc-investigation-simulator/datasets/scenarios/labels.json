@@ -1,0 +1,574 @@
+{
+  "events": {
+    "evt-0001": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0002": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0003": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0004": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0005": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0006": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0007": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0008": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0009": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0010": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0011": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0012": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0013": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0014": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0015": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0016": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0017": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0018": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0019": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0020": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0021": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0022": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0023": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0024": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0025": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0026": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0027": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0028": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0029": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0030": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0031": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0032": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0033": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0034": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0035": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0036": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0037": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0038": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0039": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0040": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0041": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0042": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0043": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0044": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0045": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0046": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0047": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0048": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0049": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0050": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0051": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0052": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0053": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0054": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0055": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0056": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0057": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0058": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0059": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0060": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0061": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0062": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0063": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0064": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0065": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0066": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0067": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0068": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0069": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0070": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0071": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0072": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0073": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0074": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0075": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0076": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0077": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0078": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0079": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0080": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0081": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0082": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0083": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0084": {
+      "scenario": "background",
+      "malicious": false
+    },
+    "evt-0085": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0086": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0087": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0088": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0089": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0090": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0091": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0092": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0093": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0094": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0095": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0096": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0097": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0098": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0099": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0100": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0101": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0102": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0103": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0104": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0105": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0106": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0107": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0108": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0109": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0110": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0111": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0112": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0113": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0114": {
+      "scenario": "S1",
+      "malicious": true
+    },
+    "evt-0115": {
+      "scenario": "S2",
+      "malicious": true
+    },
+    "evt-0116": {
+      "scenario": "S2",
+      "malicious": true
+    },
+    "evt-0117": {
+      "scenario": "S2",
+      "malicious": true
+    },
+    "evt-0118": {
+      "scenario": "S2",
+      "malicious": true
+    },
+    "evt-0119": {
+      "scenario": "S3",
+      "malicious": false
+    },
+    "evt-0120": {
+      "scenario": "S4",
+      "malicious": false
+    },
+    "evt-0121": {
+      "scenario": "S5",
+      "malicious": false
+    },
+    "evt-0122": {
+      "scenario": "S6",
+      "malicious": false
+    },
+    "evt-0123": {
+      "scenario": "S6",
+      "malicious": false
+    },
+    "evt-0124": {
+      "scenario": "S7",
+      "malicious": false
+    },
+    "evt-0125": {
+      "scenario": "S7",
+      "malicious": false
+    },
+    "evt-0126": {
+      "scenario": "S7",
+      "malicious": false
+    },
+    "evt-0127": {
+      "scenario": "S7",
+      "malicious": false
+    },
+    "evt-0128": {
+      "scenario": "S7",
+      "malicious": false
+    },
+    "evt-0129": {
+      "scenario": "S7",
+      "malicious": false
+    },
+    "evt-0130": {
+      "scenario": "S7",
+      "malicious": false
+    },
+    "evt-0131": {
+      "scenario": "S7",
+      "malicious": false
+    },
+    "evt-0132": {
+      "scenario": "S7",
+      "malicious": false
+    },
+    "evt-0133": {
+      "scenario": "S7",
+      "malicious": false
+    },
+    "evt-0134": {
+      "scenario": "S7",
+      "malicious": false
+    },
+    "evt-0135": {
+      "scenario": "S7",
+      "malicious": false
+    }
+  },
+  "expected_incidents": {
+    "S1": {
+      "verdict": "True positive",
+      "summary": "RDP brute force led to account compromise, admin rights and credential access"
+    },
+    "S2": {
+      "verdict": "True positive",
+      "summary": "Phishing led to credential use from attacker infrastructure"
+    },
+    "S3": {
+      "verdict": "Benign",
+      "summary": "Approved IT maintenance script"
+    },
+    "S4": {
+      "verdict": "Benign",
+      "summary": "Approved temporary admin rights"
+    },
+    "S5": {
+      "verdict": "Benign",
+      "summary": "Nightly off-site backup"
+    },
+    "S6": {
+      "verdict": "Inconclusive",
+      "summary": "Large upload with no context; needs the user's manager to confirm"
+    },
+    "S7": {
+      "verdict": "Benign",
+      "summary": "Authorised vulnerability scan"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+title: Failed Logon (building block)
+name: failed_logon
+id: 616715b1-1ebb-4321-89cf-749dd5b1a65e
+status: stable
+description: A single failed logon. Not an alert by itself; used by the brute-force and password-spray correlation rules.
+author: Project 07 (SOC Investigation Simulator)
+date: 2026-11-03
+tags:
+    - attack.credential-access
+    - attack.t1110
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4625
+    condition: selection
+falsepositives:
+    - Mistyped passwords
+level: informational
+building_block: true

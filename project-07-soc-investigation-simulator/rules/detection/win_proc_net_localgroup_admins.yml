@@ -1,0 +1,27 @@
+title: Local Administrators Group Enumeration via net.exe
+name: net_localgroup_admins
+id: 1f9612c0-fd40-4e5f-a10f-b26ea0d952bb
+status: test
+description: Detects enumeration of the local Administrators group with net.exe or net1.exe, a common early discovery step after initial access.
+author: Project 07 (SOC Investigation Simulator)
+date: 2026-11-03
+tags:
+    - attack.discovery
+    - attack.t1069.001
+logsource:
+    product: windows
+    category: process_creation
+detection:
+    selection_img:
+        Image|endswith:
+            - '\net.exe'
+            - '\net1.exe'
+    selection_cli:
+        CommandLine|contains|all:
+            - 'localgroup'
+            - 'administrators'
+    condition: all of selection_*
+falsepositives:
+    - Administrators or inventory scripts checking group membership
+level: medium
+risk_score: 25

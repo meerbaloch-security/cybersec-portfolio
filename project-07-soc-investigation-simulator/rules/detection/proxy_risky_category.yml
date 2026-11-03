@@ -1,0 +1,23 @@
+title: Web Request to a Newly Registered or Phishing Domain
+name: proxy_risky_category
+id: b25c09a9-a258-4467-908f-de1fd70ff2a6
+status: test
+description: Proxy allowed a request to a domain the proxy categorised as newly registered or phishing.
+author: Project 07 (SOC Investigation Simulator)
+date: 2026-11-03
+tags:
+    - attack.initial-access
+    - attack.t1566.002
+logsource:
+    product: proxy
+detection:
+    selection:
+        action: allowed
+        url_category:
+            - 'newly-registered'
+            - 'phishing'
+    condition: selection
+falsepositives:
+    - New legitimate SaaS domains
+level: medium
+risk_score: 30
