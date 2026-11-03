@@ -1,0 +1,389 @@
+{
+  "_comment": "FICTIONAL environment for testing attack-paths. Account 111122223333 is the AWS documentation example ID. CVE, CVSS, EPSS and KEV values were taken from Project 05's live scan on 3 November 2026.",
+  "account": {
+    "id": "111122223333",
+    "name": "acme-retail-prod",
+    "region": "us-east-1"
+  },
+  "compute": [
+    {
+      "name": "web-prod-1",
+      "id": "i-0a1b2c3d4e5f60001",
+      "type": "ec2",
+      "public": true,
+      "imds_v1": true,
+      "role": "web-app-role",
+      "exposure": [
+        {
+          "port": 443,
+          "source": "0.0.0.0/0",
+          "service": "Django storefront"
+        }
+      ],
+      "software": [
+        {
+          "package": "django",
+          "version": "3.2.0",
+          "cves": [
+            {
+              "id": "CVE-2022-34265",
+              "cvss": 9.8,
+              "epss": 0.736,
+              "kev": false,
+              "fixed_in": "3.2.14",
+              "remote": true
+            }
+          ]
+        },
+        {
+          "package": "pillow",
+          "version": "8.0.0",
+          "cves": [
+            {
+              "id": "CVE-2023-4863",
+              "cvss": 8.8,
+              "epss": 0.9996,
+              "kev": true,
+              "fixed_in": "10.0.1",
+              "remote": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bastion-1",
+      "id": "i-0a1b2c3d4e5f60002",
+      "type": "ec2",
+      "public": true,
+      "password_auth": true,
+      "role": "bastion-role",
+      "exposure": [
+        {
+          "port": 22,
+          "source": "0.0.0.0/0",
+          "service": "SSH"
+        }
+      ],
+      "software": [
+        {
+          "package": "paramiko",
+          "version": "2.4.1",
+          "cves": [
+            {
+              "id": "CVE-2018-1000805",
+              "cvss": 8.8,
+              "epss": 0.044,
+              "kev": false,
+              "fixed_in": "2.4.2",
+              "remote": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "image-resizer",
+      "type": "lambda",
+      "public": true,
+      "role": "resizer-role",
+      "exposure": [
+        {
+          "port": 443,
+          "source": "public",
+          "service": "Lambda function URL"
+        }
+      ],
+      "software": [
+        {
+          "package": "pillow",
+          "version": "8.0.0",
+          "cves": [
+            {
+              "id": "CVE-2023-4863",
+              "cvss": 8.8,
+              "epss": 0.9996,
+              "kev": true,
+              "fixed_in": "10.0.1",
+              "remote": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "batch-worker",
+      "id": "i-0a1b2c3d4e5f60003",
+      "type": "ec2",
+      "public": false,
+      "role": "batch-role",
+      "software": []
+    },
+    {
+      "name": "internal-api",
+      "id": "i-0a1b2c3d4e5f60004",
+      "type": "ec2",
+      "public": false,
+      "role": "internal-api-role",
+      "software": [
+        {
+          "package": "django",
+          "version": "3.2.0",
+          "cves": [
+            {
+              "id": "CVE-2022-34265",
+              "cvss": 9.8,
+              "epss": 0.736,
+              "kev": false,
+              "fixed_in": "3.2.14",
+              "remote": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "reporting-db-export",
+      "id": "i-0a1b2c3d4e5f60005",
+      "type": "ec2",
+      "public": false,
+      "software": []
+    }
+  ],
+  "roles": [
+    {
+      "name": "web-app-role",
+      "trust": [
+        {
+          "principal": "service:ec2.amazonaws.com"
+        }
+      ],
+      "statements": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "s3:GetObject",
+            "s3:PutObject"
+          ],
+          "Resource": "arn:aws:s3:::acme-product-images/*"
+        },
+        {
+          "Effect": "Allow",
+          "Action": "s3:GetObject",
+          "Resource": "arn:aws:s3:::acme-customer-data/exports/*"
+        },
+        {
+          "Effect": "Allow",
+          "Action": "sts:AssumeRole",
+          "Resource": "arn:aws:iam::111122223333:role/deploy-role"
+        }
+      ]
+    },
+    {
+      "name": "deploy-role",
+      "trust": [
+        {
+          "principal": "role:web-app-role"
+        },
+        {
+          "principal": "role:ci-runner-role"
+        }
+      ],
+      "statements": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "iam:PassRole",
+            "ec2:RunInstances",
+            "ec2:DescribeInstances"
+          ],
+          "Resource": "*"
+        }
+      ]
+    },
+    {
+      "name": "bastion-role",
+      "trust": [
+        {
+          "principal": "service:ec2.amazonaws.com"
+        }
+      ],
+      "statements": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "ssm:SendCommand",
+            "ssm:ListCommandInvocations",
+            "ec2:DescribeInstances"
+          ],
+          "Resource": "*"
+        }
+      ]
+    },
+    {
+      "name": "batch-role",
+      "trust": [
+        {
+          "principal": "service:ec2.amazonaws.com"
+        }
+      ],
+      "statements": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "iam:GetPolicyVersion",
+            "iam:CreatePolicyVersion",
+            "iam:ListPolicies"
+          ],
+          "Resource": "*"
+        },
+        {
+          "Effect": "Allow",
+          "Action": [
+            "s3:GetObject",
+            "s3:PutObject"
+          ],
+          "Resource": "arn:aws:s3:::acme-batch-scratch/*"
+        }
+      ]
+    },
+    {
+      "name": "internal-api-role",
+      "trust": [
+        {
+          "principal": "service:ec2.amazonaws.com"
+        }
+      ],
+      "statements": [
+        {
+          "Effect": "Allow",
+          "Action": "secretsmanager:GetSecretValue",
+          "Resource": "arn:aws:secretsmanager:us-east-1:111122223333:secret:prod-db-credentials-*"
+        }
+      ]
+    },
+    {
+      "name": "resizer-role",
+      "trust": [
+        {
+          "principal": "service:lambda.amazonaws.com"
+        }
+      ],
+      "statements": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "s3:GetObject",
+            "s3:PutObject"
+          ],
+          "Resource": "arn:aws:s3:::acme-*/*"
+        },
+        {
+          "Effect": "Allow",
+          "Action": [
+            "logs:CreateLogStream",
+            "logs:PutLogEvents"
+          ],
+          "Resource": "*"
+        }
+      ]
+    },
+    {
+      "name": "vendor-audit-role",
+      "trust": [
+        {
+          "principal": "account:444455556666"
+        }
+      ],
+      "statements": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "s3:GetObject",
+            "s3:ListBucket"
+          ],
+          "Resource": [
+            "arn:aws:s3:::acme-finance-reports",
+            "arn:aws:s3:::acme-finance-reports/*"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ci-runner-role",
+      "trust": [
+        {
+          "principal": "service:codebuild.amazonaws.com"
+        }
+      ],
+      "statements": [
+        {
+          "Effect": "Allow",
+          "Action": "sts:AssumeRole",
+          "Resource": "arn:aws:iam::111122223333:role/deploy-role"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "name": "ci-bot",
+      "mfa": false,
+      "access_keys": [
+        {
+          "age_days": 412,
+          "last_used_days": 1
+        }
+      ],
+      "statements": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "lambda:UpdateFunctionCode",
+            "lambda:GetFunction"
+          ],
+          "Resource": "arn:aws:lambda:us-east-1:111122223333:function:image-resizer"
+        }
+      ]
+    },
+    {
+      "name": "alice",
+      "mfa": true,
+      "access_keys": [],
+      "statements": [
+        {
+          "Effect": "Allow",
+          "Action": "*",
+          "Resource": "*"
+        }
+      ]
+    }
+  ],
+  "data": [
+    {
+      "name": "acme-customer-data",
+      "type": "s3",
+      "sensitivity": "critical",
+      "contains": "Customer PII (2.1M records)"
+    },
+    {
+      "name": "prod-db-credentials",
+      "type": "secret",
+      "arn": "arn:aws:secretsmanager:us-east-1:111122223333:secret:prod-db-credentials-Ab12Cd",
+      "sensitivity": "critical",
+      "contains": "Production database password"
+    },
+    {
+      "name": "acme-finance-reports",
+      "type": "s3",
+      "sensitivity": "high",
+      "contains": "Quarterly financial reports"
+    },
+    {
+      "name": "acme-product-images",
+      "type": "s3",
+      "sensitivity": "low",
+      "contains": "Public product photos"
+    }
+  ]
+}

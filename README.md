@@ -107,6 +107,25 @@ A dependency scanner that ranks vulnerabilities by real-world exploitation risk,
 
 [View the project code and documentation →](project-05-vuln-prioritizer/)
 
+### [Project 06 — Cloud Attack Path Analyzer](project-06-attack-path-analyzer/)
+
+> **Status:** Complete
+
+Builds a graph of a cloud environment and finds how an attacker could chain small weaknesses into a breach: every path from an entry point to sensitive data, ranked by risk, plus the smallest set of fixes that breaks them all. Brings Projects 04 and 05 together.
+
+![Attack path report](project-06-attack-path-analyzer/docs/report.png)
+
+### Key Results
+
+- Models internet exposure, exploitable vulnerabilities (CISA KEV / EPSS / CVSS), IAM roles and trust policies, lateral movement (SSM, Lambda), privilege escalation and data access as one graph, with a MITRE ATT&CK technique on every step
+- On a fictional AWS environment with real vulnerability data: 17 attack paths to 3 crown jewels, the most dangerous only 3 steps from the internet to customer PII
+- Greedy choke-point analysis found 5 fixes that break all 17 paths, with the first 3 removing 81% of the risk
+- Surfaced issues a finding-by-finding scan misses, such as an `acme-*` wildcard that gave an image-processing Lambda access to customer data, and a bastion host on 8 paths despite having no exploitable CVE
+- Self-contained interactive HTML report: trace any path, hover for evidence, and tick fixes to watch paths close
+- 14 unit tests and a `--fail-on-paths` CI gate
+
+[View the project code, interactive report and documentation →](project-06-attack-path-analyzer/)
+
 ## Skills Demonstrated
 
 - Active Directory Domain Services and DNS administration
@@ -125,6 +144,7 @@ A dependency scanner that ranks vulnerabilities by real-world exploitation risk,
 - Threat intelligence: IOC extraction, refanging and STIX 2.1
 - Cloud security: AWS IAM policy evaluation and privilege-escalation analysis
 - Vulnerability management: risk-based prioritization with CVSS, EPSS and CISA KEV
+- Attack path analysis: graph modelling, choke-point remediation planning and MITRE ATT&CK mapping
 
 ## Portfolio Direction
 

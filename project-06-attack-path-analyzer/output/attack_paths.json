@@ -1,0 +1,947 @@
+{
+  "summary": {
+    "account": "acme-retail-prod (111122223333)",
+    "nodes": 24,
+    "edges": 42,
+    "attack_paths": 17,
+    "crown_jewels_reachable": [
+      "acme-customer-data",
+      "acme-finance-reports",
+      "prod-db-credentials"
+    ],
+    "entry_points": [
+      "Internet",
+      "Leaked access key",
+      "Vendor account"
+    ],
+    "easiest_path_steps": 2,
+    "fixes_to_break_all": 5,
+    "fixes_for_80pct": 3,
+    "risk_removed_by_top3": 81
+  },
+  "nodes": [
+    {
+      "id": "internet",
+      "label": "Internet",
+      "kind": "entry",
+      "detail": "Anyone on the internet",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "admin",
+      "label": "Account administrator",
+      "kind": "privilege",
+      "detail": "Full control of the AWS account",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "role:web-app-role",
+      "label": "web-app-role",
+      "kind": "identity",
+      "detail": "IAM role",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "role:deploy-role",
+      "label": "deploy-role",
+      "kind": "identity",
+      "detail": "IAM role",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "role:bastion-role",
+      "label": "bastion-role",
+      "kind": "identity",
+      "detail": "IAM role",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "role:batch-role",
+      "label": "batch-role",
+      "kind": "identity",
+      "detail": "IAM role",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "role:internal-api-role",
+      "label": "internal-api-role",
+      "kind": "identity",
+      "detail": "IAM role",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "role:resizer-role",
+      "label": "resizer-role",
+      "kind": "identity",
+      "detail": "IAM role",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "role:vendor-audit-role",
+      "label": "vendor-audit-role",
+      "kind": "identity",
+      "detail": "IAM role",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "role:ci-runner-role",
+      "label": "ci-runner-role",
+      "kind": "identity",
+      "detail": "IAM role",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "user:ci-bot",
+      "label": "ci-bot",
+      "kind": "identity",
+      "detail": "IAM user",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "user:alice",
+      "label": "alice",
+      "kind": "identity",
+      "detail": "IAM user",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "data:acme-customer-data",
+      "label": "acme-customer-data",
+      "kind": "data",
+      "detail": "Customer PII (2.1M records)",
+      "sensitivity": "critical",
+      "crown_jewel": true
+    },
+    {
+      "id": "data:prod-db-credentials",
+      "label": "prod-db-credentials",
+      "kind": "data",
+      "detail": "Production database password",
+      "sensitivity": "critical",
+      "crown_jewel": true
+    },
+    {
+      "id": "data:acme-finance-reports",
+      "label": "acme-finance-reports",
+      "kind": "data",
+      "detail": "Quarterly financial reports",
+      "sensitivity": "high",
+      "crown_jewel": true
+    },
+    {
+      "id": "data:acme-product-images",
+      "label": "acme-product-images",
+      "kind": "data",
+      "detail": "Public product photos",
+      "sensitivity": "low",
+      "crown_jewel": false
+    },
+    {
+      "id": "compute:web-prod-1",
+      "label": "web-prod-1",
+      "kind": "compute",
+      "detail": "EC2 \u00b7 public",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "compute:bastion-1",
+      "label": "bastion-1",
+      "kind": "compute",
+      "detail": "EC2 \u00b7 public",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "compute:image-resizer",
+      "label": "image-resizer",
+      "kind": "compute",
+      "detail": "LAMBDA \u00b7 public",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "compute:batch-worker",
+      "label": "batch-worker",
+      "kind": "compute",
+      "detail": "EC2",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "compute:internal-api",
+      "label": "internal-api",
+      "kind": "compute",
+      "detail": "EC2",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "compute:reporting-db-export",
+      "label": "reporting-db-export",
+      "kind": "compute",
+      "detail": "EC2",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "external:444455556666",
+      "label": "Vendor account",
+      "kind": "entry",
+      "detail": "Third-party AWS account 444455556666",
+      "sensitivity": null,
+      "crown_jewel": false
+    },
+    {
+      "id": "leaked-key",
+      "label": "Leaked access key",
+      "kind": "entry",
+      "detail": "Key leaked in code or logs",
+      "sensitivity": null,
+      "crown_jewel": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "internet->compute:web-prod-1",
+      "src": "internet",
+      "dst": "compute:web-prod-1",
+      "label": "Exploit CVE-2023-4863 in pillow 8.0.0",
+      "technique": "T1190",
+      "effort": 1,
+      "evidence": "Django storefront on port 443 open to the internet; CVE-2023-4863 in CISA KEV (exploited in the wild)",
+      "fix": "Upgrade django to 3.2.14 and pillow to 10.0.1 on web-prod-1 (2 exploitable CVEs), or remove internet access to port 443"
+    },
+    {
+      "id": "compute:web-prod-1->role:web-app-role",
+      "src": "compute:web-prod-1",
+      "dst": "role:web-app-role",
+      "label": "Use the attached role's credentials",
+      "technique": "T1552.005",
+      "effort": 1,
+      "evidence": "web-prod-1 runs as role web-app-role; credentials available from the instance metadata service (IMDSv1 also allows SSRF theft)",
+      "fix": null
+    },
+    {
+      "id": "internet->compute:bastion-1",
+      "src": "internet",
+      "dst": "compute:bastion-1",
+      "label": "Brute-force SSH password",
+      "technique": "T1110",
+      "effort": 6,
+      "evidence": "Port 22 open to the internet with password login enabled",
+      "fix": "Close port 22 to the internet; use SSM Session Manager and key-only auth"
+    },
+    {
+      "id": "compute:bastion-1->role:bastion-role",
+      "src": "compute:bastion-1",
+      "dst": "role:bastion-role",
+      "label": "Use the attached role's credentials",
+      "technique": "T1552.005",
+      "effort": 1,
+      "evidence": "bastion-1 runs as role bastion-role; credentials available from the instance metadata service",
+      "fix": null
+    },
+    {
+      "id": "internet->compute:image-resizer",
+      "src": "internet",
+      "dst": "compute:image-resizer",
+      "label": "Exploit CVE-2023-4863 in pillow 8.0.0",
+      "technique": "T1190",
+      "effort": 1,
+      "evidence": "Lambda function URL on port 443 open to the internet; CVE-2023-4863 in CISA KEV (exploited in the wild)",
+      "fix": "Upgrade pillow to 10.0.1 on image-resizer, or remove internet access to port 443"
+    },
+    {
+      "id": "compute:image-resizer->role:resizer-role",
+      "src": "compute:image-resizer",
+      "dst": "role:resizer-role",
+      "label": "Use the attached role's credentials",
+      "technique": "T1552.005",
+      "effort": 1,
+      "evidence": "image-resizer runs as role resizer-role; credentials available from the function environment",
+      "fix": null
+    },
+    {
+      "id": "compute:batch-worker->role:batch-role",
+      "src": "compute:batch-worker",
+      "dst": "role:batch-role",
+      "label": "Use the attached role's credentials",
+      "technique": "T1552.005",
+      "effort": 1,
+      "evidence": "batch-worker runs as role batch-role; credentials available from the instance metadata service",
+      "fix": null
+    },
+    {
+      "id": "compute:internal-api->role:internal-api-role",
+      "src": "compute:internal-api",
+      "dst": "role:internal-api-role",
+      "label": "Use the attached role's credentials",
+      "technique": "T1552.005",
+      "effort": 1,
+      "evidence": "internal-api runs as role internal-api-role; credentials available from the instance metadata service",
+      "fix": null
+    },
+    {
+      "id": "external:444455556666->role:vendor-audit-role",
+      "src": "external:444455556666",
+      "dst": "role:vendor-audit-role",
+      "label": "Assume role trusted by a third party",
+      "technique": "T1199",
+      "effort": 4,
+      "evidence": "Role vendor-audit-role trusts the whole account 444455556666 with no ExternalId condition; a compromise of that vendor (or a confused deputy) reaches this account",
+      "fix": "Add an sts:ExternalId condition to vendor-audit-role's trust policy and trust a specific role ARN"
+    },
+    {
+      "id": "leaked-key->user:ci-bot",
+      "src": "leaked-key",
+      "dst": "user:ci-bot",
+      "label": "Use a leaked long-lived access key",
+      "technique": "T1078.004",
+      "effort": 5,
+      "evidence": "ci-bot has an access key 412 days old and no MFA",
+      "fix": "Rotate and remove ci-bot's access key; use short-lived credentials (OIDC / IAM roles)"
+    },
+    {
+      "id": "role:web-app-role->role:deploy-role",
+      "src": "role:web-app-role",
+      "dst": "role:deploy-role",
+      "label": "Assume role deploy-role",
+      "technique": "T1078.004",
+      "effort": 1,
+      "evidence": "web-app-role may call sts:AssumeRole on deploy-role, and deploy-role's trust policy allows it",
+      "fix": "Remove web-app-role from deploy-role's trust policy, or narrow its sts:AssumeRole permission"
+    },
+    {
+      "id": "role:web-app-role->data:acme-customer-data",
+      "src": "role:web-app-role",
+      "dst": "data:acme-customer-data",
+      "label": "Read acme-customer-data",
+      "technique": "T1530",
+      "effort": 1,
+      "evidence": "web-app-role may call s3:GetObject on acme-customer-data",
+      "fix": "Remove s3:GetObject on acme-customer-data from web-app-role if it is not needed"
+    },
+    {
+      "id": "role:web-app-role->data:acme-product-images",
+      "src": "role:web-app-role",
+      "dst": "data:acme-product-images",
+      "label": "Read acme-product-images",
+      "technique": "T1530",
+      "effort": 1,
+      "evidence": "web-app-role may call s3:GetObject on acme-product-images",
+      "fix": "Remove s3:GetObject on acme-product-images from web-app-role if it is not needed"
+    },
+    {
+      "id": "role:deploy-role->admin",
+      "src": "role:deploy-role",
+      "dst": "admin",
+      "label": "Escalate: Launch an instance with an admin role",
+      "technique": "T1098",
+      "effort": 2,
+      "evidence": "deploy-role has iam:PassRole + ec2:RunInstances on all resources",
+      "fix": "Remove or scope iam:PassRole + ec2:RunInstances for deploy-role"
+    },
+    {
+      "id": "role:bastion-role->compute:web-prod-1",
+      "src": "role:bastion-role",
+      "dst": "compute:web-prod-1",
+      "label": "Run commands on web-prod-1 via SSM",
+      "technique": "T1651",
+      "effort": 1,
+      "evidence": "bastion-role may call ssm:SendCommand on web-prod-1",
+      "fix": "Scope ssm:SendCommand for bastion-role to specific instances or tags"
+    },
+    {
+      "id": "role:bastion-role->compute:bastion-1",
+      "src": "role:bastion-role",
+      "dst": "compute:bastion-1",
+      "label": "Run commands on bastion-1 via SSM",
+      "technique": "T1651",
+      "effort": 1,
+      "evidence": "bastion-role may call ssm:SendCommand on bastion-1",
+      "fix": "Scope ssm:SendCommand for bastion-role to specific instances or tags"
+    },
+    {
+      "id": "role:bastion-role->compute:batch-worker",
+      "src": "role:bastion-role",
+      "dst": "compute:batch-worker",
+      "label": "Run commands on batch-worker via SSM",
+      "technique": "T1651",
+      "effort": 1,
+      "evidence": "bastion-role may call ssm:SendCommand on batch-worker",
+      "fix": "Scope ssm:SendCommand for bastion-role to specific instances or tags"
+    },
+    {
+      "id": "role:bastion-role->compute:internal-api",
+      "src": "role:bastion-role",
+      "dst": "compute:internal-api",
+      "label": "Run commands on internal-api via SSM",
+      "technique": "T1651",
+      "effort": 1,
+      "evidence": "bastion-role may call ssm:SendCommand on internal-api",
+      "fix": "Scope ssm:SendCommand for bastion-role to specific instances or tags"
+    },
+    {
+      "id": "role:bastion-role->compute:reporting-db-export",
+      "src": "role:bastion-role",
+      "dst": "compute:reporting-db-export",
+      "label": "Run commands on reporting-db-export via SSM",
+      "technique": "T1651",
+      "effort": 1,
+      "evidence": "bastion-role may call ssm:SendCommand on reporting-db-export",
+      "fix": "Scope ssm:SendCommand for bastion-role to specific instances or tags"
+    },
+    {
+      "id": "role:batch-role->admin",
+      "src": "role:batch-role",
+      "dst": "admin",
+      "label": "Escalate: Publish an admin version of its own policy",
+      "technique": "T1098",
+      "effort": 2,
+      "evidence": "batch-role has iam:CreatePolicyVersion on all resources",
+      "fix": "Remove or scope iam:CreatePolicyVersion for batch-role"
+    },
+    {
+      "id": "role:internal-api-role->data:prod-db-credentials",
+      "src": "role:internal-api-role",
+      "dst": "data:prod-db-credentials",
+      "label": "Read prod-db-credentials",
+      "technique": "T1530",
+      "effort": 1,
+      "evidence": "internal-api-role may call secretsmanager:GetSecretValue on prod-db-credentials",
+      "fix": "Remove secretsmanager:GetSecretValue on prod-db-credentials from internal-api-role if it is not needed"
+    },
+    {
+      "id": "role:resizer-role->data:acme-customer-data",
+      "src": "role:resizer-role",
+      "dst": "data:acme-customer-data",
+      "label": "Read acme-customer-data",
+      "technique": "T1530",
+      "effort": 1,
+      "evidence": "resizer-role may call s3:GetObject on acme-customer-data",
+      "fix": "Remove s3:GetObject on acme-customer-data from resizer-role if it is not needed"
+    },
+    {
+      "id": "role:resizer-role->data:acme-finance-reports",
+      "src": "role:resizer-role",
+      "dst": "data:acme-finance-reports",
+      "label": "Read acme-finance-reports",
+      "technique": "T1530",
+      "effort": 1,
+      "evidence": "resizer-role may call s3:GetObject on acme-finance-reports",
+      "fix": "Remove s3:GetObject on acme-finance-reports from resizer-role if it is not needed"
+    },
+    {
+      "id": "role:resizer-role->data:acme-product-images",
+      "src": "role:resizer-role",
+      "dst": "data:acme-product-images",
+      "label": "Read acme-product-images",
+      "technique": "T1530",
+      "effort": 1,
+      "evidence": "resizer-role may call s3:GetObject on acme-product-images",
+      "fix": "Remove s3:GetObject on acme-product-images from resizer-role if it is not needed"
+    },
+    {
+      "id": "role:vendor-audit-role->data:acme-finance-reports",
+      "src": "role:vendor-audit-role",
+      "dst": "data:acme-finance-reports",
+      "label": "Read acme-finance-reports",
+      "technique": "T1530",
+      "effort": 1,
+      "evidence": "vendor-audit-role may call s3:GetObject on acme-finance-reports",
+      "fix": "Remove s3:GetObject on acme-finance-reports from vendor-audit-role if it is not needed"
+    },
+    {
+      "id": "role:ci-runner-role->role:deploy-role",
+      "src": "role:ci-runner-role",
+      "dst": "role:deploy-role",
+      "label": "Assume role deploy-role",
+      "technique": "T1078.004",
+      "effort": 1,
+      "evidence": "ci-runner-role may call sts:AssumeRole on deploy-role, and deploy-role's trust policy allows it",
+      "fix": "Remove ci-runner-role from deploy-role's trust policy, or narrow its sts:AssumeRole permission"
+    },
+    {
+      "id": "user:ci-bot->compute:image-resizer",
+      "src": "user:ci-bot",
+      "dst": "compute:image-resizer",
+      "label": "Replace the code of image-resizer",
+      "technique": "T1648",
+      "effort": 1,
+      "evidence": "ci-bot may call lambda:UpdateFunctionCode on image-resizer",
+      "fix": "Remove lambda:UpdateFunctionCode from ci-bot; deploy through a pipeline"
+    },
+    {
+      "id": "user:alice->compute:web-prod-1",
+      "src": "user:alice",
+      "dst": "compute:web-prod-1",
+      "label": "Run commands on web-prod-1 via SSM",
+      "technique": "T1651",
+      "effort": 1,
+      "evidence": "alice may call ssm:SendCommand on web-prod-1",
+      "fix": "Scope ssm:SendCommand for alice to specific instances or tags"
+    },
+    {
+      "id": "user:alice->compute:bastion-1",
+      "src": "user:alice",
+      "dst": "compute:bastion-1",
+      "label": "Run commands on bastion-1 via SSM",
+      "technique": "T1651",
+      "effort": 1,
+      "evidence": "alice may call ssm:SendCommand on bastion-1",
+      "fix": "Scope ssm:SendCommand for alice to specific instances or tags"
+    },
+    {
+      "id": "user:alice->compute:image-resizer",
+      "src": "user:alice",
+      "dst": "compute:image-resizer",
+      "label": "Replace the code of image-resizer",
+      "technique": "T1648",
+      "effort": 1,
+      "evidence": "alice may call lambda:UpdateFunctionCode on image-resizer",
+      "fix": "Remove lambda:UpdateFunctionCode from alice; deploy through a pipeline"
+    },
+    {
+      "id": "user:alice->compute:batch-worker",
+      "src": "user:alice",
+      "dst": "compute:batch-worker",
+      "label": "Run commands on batch-worker via SSM",
+      "technique": "T1651",
+      "effort": 1,
+      "evidence": "alice may call ssm:SendCommand on batch-worker",
+      "fix": "Scope ssm:SendCommand for alice to specific instances or tags"
+    },
+    {
+      "id": "user:alice->compute:internal-api",
+      "src": "user:alice",
+      "dst": "compute:internal-api",
+      "label": "Run commands on internal-api via SSM",
+      "technique": "T1651",
+      "effort": 1,
+      "evidence": "alice may call ssm:SendCommand on internal-api",
+      "fix": "Scope ssm:SendCommand for alice to specific instances or tags"
+    },
+    {
+      "id": "user:alice->compute:reporting-db-export",
+      "src": "user:alice",
+      "dst": "compute:reporting-db-export",
+      "label": "Run commands on reporting-db-export via SSM",
+      "technique": "T1651",
+      "effort": 1,
+      "evidence": "alice may call ssm:SendCommand on reporting-db-export",
+      "fix": "Scope ssm:SendCommand for alice to specific instances or tags"
+    },
+    {
+      "id": "user:alice->admin",
+      "src": "user:alice",
+      "dst": "admin",
+      "label": "Already an administrator",
+      "technique": "T1078.004",
+      "effort": 0,
+      "evidence": "alice has full administrator permissions",
+      "fix": "Replace alice's admin access with least-privilege permissions"
+    },
+    {
+      "id": "user:alice->data:acme-customer-data",
+      "src": "user:alice",
+      "dst": "data:acme-customer-data",
+      "label": "Read acme-customer-data",
+      "technique": "T1530",
+      "effort": 1,
+      "evidence": "alice may call s3:GetObject on acme-customer-data",
+      "fix": "Remove s3:GetObject on acme-customer-data from alice if it is not needed"
+    },
+    {
+      "id": "user:alice->data:prod-db-credentials",
+      "src": "user:alice",
+      "dst": "data:prod-db-credentials",
+      "label": "Read prod-db-credentials",
+      "technique": "T1530",
+      "effort": 1,
+      "evidence": "alice may call secretsmanager:GetSecretValue on prod-db-credentials",
+      "fix": "Remove secretsmanager:GetSecretValue on prod-db-credentials from alice if it is not needed"
+    },
+    {
+      "id": "user:alice->data:acme-finance-reports",
+      "src": "user:alice",
+      "dst": "data:acme-finance-reports",
+      "label": "Read acme-finance-reports",
+      "technique": "T1530",
+      "effort": 1,
+      "evidence": "alice may call s3:GetObject on acme-finance-reports",
+      "fix": "Remove s3:GetObject on acme-finance-reports from alice if it is not needed"
+    },
+    {
+      "id": "user:alice->data:acme-product-images",
+      "src": "user:alice",
+      "dst": "data:acme-product-images",
+      "label": "Read acme-product-images",
+      "technique": "T1530",
+      "effort": 1,
+      "evidence": "alice may call s3:GetObject on acme-product-images",
+      "fix": "Remove s3:GetObject on acme-product-images from alice if it is not needed"
+    },
+    {
+      "id": "admin->data:acme-customer-data",
+      "src": "admin",
+      "dst": "data:acme-customer-data",
+      "label": "Read acme-customer-data",
+      "technique": "T1530",
+      "effort": 1,
+      "evidence": "Administrators can access all data",
+      "fix": null
+    },
+    {
+      "id": "admin->data:prod-db-credentials",
+      "src": "admin",
+      "dst": "data:prod-db-credentials",
+      "label": "Read prod-db-credentials",
+      "technique": "T1530",
+      "effort": 1,
+      "evidence": "Administrators can access all data",
+      "fix": null
+    },
+    {
+      "id": "admin->data:acme-finance-reports",
+      "src": "admin",
+      "dst": "data:acme-finance-reports",
+      "label": "Read acme-finance-reports",
+      "technique": "T1530",
+      "effort": 1,
+      "evidence": "Administrators can access all data",
+      "fix": null
+    },
+    {
+      "id": "admin->data:acme-product-images",
+      "src": "admin",
+      "dst": "data:acme-product-images",
+      "label": "Read acme-product-images",
+      "technique": "T1530",
+      "effort": 1,
+      "evidence": "Administrators can access all data",
+      "fix": null
+    }
+  ],
+  "paths": [
+    {
+      "entry": "internet",
+      "target": "data:acme-customer-data",
+      "edges": [
+        "internet->compute:web-prod-1",
+        "compute:web-prod-1->role:web-app-role",
+        "role:web-app-role->data:acme-customer-data"
+      ],
+      "effort": 3,
+      "impact": 10,
+      "risk": 83,
+      "likelihood": "Very likely",
+      "description": "Internet \u2192 web-prod-1 \u2192 web-app-role \u2192 acme-customer-data"
+    },
+    {
+      "entry": "internet",
+      "target": "data:acme-customer-data",
+      "edges": [
+        "internet->compute:image-resizer",
+        "compute:image-resizer->role:resizer-role",
+        "role:resizer-role->data:acme-customer-data"
+      ],
+      "effort": 3,
+      "impact": 10,
+      "risk": 83,
+      "likelihood": "Very likely",
+      "description": "Internet \u2192 image-resizer \u2192 resizer-role \u2192 acme-customer-data"
+    },
+    {
+      "entry": "internet",
+      "target": "data:acme-finance-reports",
+      "edges": [
+        "internet->compute:image-resizer",
+        "compute:image-resizer->role:resizer-role",
+        "role:resizer-role->data:acme-finance-reports"
+      ],
+      "effort": 3,
+      "impact": 7,
+      "risk": 58,
+      "likelihood": "Very likely",
+      "description": "Internet \u2192 image-resizer \u2192 resizer-role \u2192 acme-finance-reports"
+    },
+    {
+      "entry": "internet",
+      "target": "data:acme-customer-data",
+      "edges": [
+        "internet->compute:web-prod-1",
+        "compute:web-prod-1->role:web-app-role",
+        "role:web-app-role->role:deploy-role",
+        "role:deploy-role->admin",
+        "admin->data:acme-customer-data"
+      ],
+      "effort": 6,
+      "impact": 10,
+      "risk": 58,
+      "likelihood": "Likely",
+      "description": "Internet \u2192 web-prod-1 \u2192 web-app-role \u2192 deploy-role \u2192 Account administrator \u2192 acme-customer-data"
+    },
+    {
+      "entry": "internet",
+      "target": "data:prod-db-credentials",
+      "edges": [
+        "internet->compute:web-prod-1",
+        "compute:web-prod-1->role:web-app-role",
+        "role:web-app-role->role:deploy-role",
+        "role:deploy-role->admin",
+        "admin->data:prod-db-credentials"
+      ],
+      "effort": 6,
+      "impact": 10,
+      "risk": 58,
+      "likelihood": "Likely",
+      "description": "Internet \u2192 web-prod-1 \u2192 web-app-role \u2192 deploy-role \u2192 Account administrator \u2192 prod-db-credentials"
+    },
+    {
+      "entry": "external:444455556666",
+      "target": "data:acme-finance-reports",
+      "edges": [
+        "external:444455556666->role:vendor-audit-role",
+        "role:vendor-audit-role->data:acme-finance-reports"
+      ],
+      "effort": 5,
+      "impact": 7,
+      "risk": 47,
+      "likelihood": "Likely",
+      "description": "Vendor account \u2192 vendor-audit-role \u2192 acme-finance-reports"
+    },
+    {
+      "entry": "leaked-key",
+      "target": "data:acme-customer-data",
+      "edges": [
+        "leaked-key->user:ci-bot",
+        "user:ci-bot->compute:image-resizer",
+        "compute:image-resizer->role:resizer-role",
+        "role:resizer-role->data:acme-customer-data"
+      ],
+      "effort": 8,
+      "impact": 10,
+      "risk": 42,
+      "likelihood": "Possible",
+      "description": "Leaked access key \u2192 ci-bot \u2192 image-resizer \u2192 resizer-role \u2192 acme-customer-data"
+    },
+    {
+      "entry": "internet",
+      "target": "data:acme-finance-reports",
+      "edges": [
+        "internet->compute:web-prod-1",
+        "compute:web-prod-1->role:web-app-role",
+        "role:web-app-role->role:deploy-role",
+        "role:deploy-role->admin",
+        "admin->data:acme-finance-reports"
+      ],
+      "effort": 6,
+      "impact": 7,
+      "risk": 41,
+      "likelihood": "Likely",
+      "description": "Internet \u2192 web-prod-1 \u2192 web-app-role \u2192 deploy-role \u2192 Account administrator \u2192 acme-finance-reports"
+    },
+    {
+      "entry": "leaked-key",
+      "target": "data:acme-finance-reports",
+      "edges": [
+        "leaked-key->user:ci-bot",
+        "user:ci-bot->compute:image-resizer",
+        "compute:image-resizer->role:resizer-role",
+        "role:resizer-role->data:acme-finance-reports"
+      ],
+      "effort": 8,
+      "impact": 7,
+      "risk": 29,
+      "likelihood": "Possible",
+      "description": "Leaked access key \u2192 ci-bot \u2192 image-resizer \u2192 resizer-role \u2192 acme-finance-reports"
+    },
+    {
+      "entry": "internet",
+      "target": "data:acme-customer-data",
+      "edges": [
+        "internet->compute:bastion-1",
+        "compute:bastion-1->role:bastion-role",
+        "role:bastion-role->compute:web-prod-1",
+        "compute:web-prod-1->role:web-app-role",
+        "role:web-app-role->data:acme-customer-data"
+      ],
+      "effort": 10,
+      "impact": 10,
+      "risk": 25,
+      "likelihood": "Unlikely",
+      "description": "Internet \u2192 bastion-1 \u2192 bastion-role \u2192 web-prod-1 \u2192 web-app-role \u2192 acme-customer-data"
+    },
+    {
+      "entry": "internet",
+      "target": "data:prod-db-credentials",
+      "edges": [
+        "internet->compute:bastion-1",
+        "compute:bastion-1->role:bastion-role",
+        "role:bastion-role->compute:internal-api",
+        "compute:internal-api->role:internal-api-role",
+        "role:internal-api-role->data:prod-db-credentials"
+      ],
+      "effort": 10,
+      "impact": 10,
+      "risk": 25,
+      "likelihood": "Unlikely",
+      "description": "Internet \u2192 bastion-1 \u2192 bastion-role \u2192 internal-api \u2192 internal-api-role \u2192 prod-db-credentials"
+    },
+    {
+      "entry": "internet",
+      "target": "data:acme-customer-data",
+      "edges": [
+        "internet->compute:bastion-1",
+        "compute:bastion-1->role:bastion-role",
+        "role:bastion-role->compute:batch-worker",
+        "compute:batch-worker->role:batch-role",
+        "role:batch-role->admin",
+        "admin->data:acme-customer-data"
+      ],
+      "effort": 12,
+      "impact": 10,
+      "risk": 15,
+      "likelihood": "Unlikely",
+      "description": "Internet \u2192 bastion-1 \u2192 bastion-role \u2192 batch-worker \u2192 batch-role \u2192 Account administrator \u2192 acme-customer-data"
+    },
+    {
+      "entry": "internet",
+      "target": "data:prod-db-credentials",
+      "edges": [
+        "internet->compute:bastion-1",
+        "compute:bastion-1->role:bastion-role",
+        "role:bastion-role->compute:batch-worker",
+        "compute:batch-worker->role:batch-role",
+        "role:batch-role->admin",
+        "admin->data:prod-db-credentials"
+      ],
+      "effort": 12,
+      "impact": 10,
+      "risk": 15,
+      "likelihood": "Unlikely",
+      "description": "Internet \u2192 bastion-1 \u2192 bastion-role \u2192 batch-worker \u2192 batch-role \u2192 Account administrator \u2192 prod-db-credentials"
+    },
+    {
+      "entry": "internet",
+      "target": "data:acme-customer-data",
+      "edges": [
+        "internet->compute:bastion-1",
+        "compute:bastion-1->role:bastion-role",
+        "role:bastion-role->compute:web-prod-1",
+        "compute:web-prod-1->role:web-app-role",
+        "role:web-app-role->role:deploy-role",
+        "role:deploy-role->admin",
+        "admin->data:acme-customer-data"
+      ],
+      "effort": 13,
+      "impact": 10,
+      "risk": 15,
+      "likelihood": "Unlikely",
+      "description": "Internet \u2192 bastion-1 \u2192 bastion-role \u2192 web-prod-1 \u2192 web-app-role \u2192 deploy-role \u2192 Account administrator \u2192 acme-customer-data"
+    },
+    {
+      "entry": "internet",
+      "target": "data:prod-db-credentials",
+      "edges": [
+        "internet->compute:bastion-1",
+        "compute:bastion-1->role:bastion-role",
+        "role:bastion-role->compute:web-prod-1",
+        "compute:web-prod-1->role:web-app-role",
+        "role:web-app-role->role:deploy-role",
+        "role:deploy-role->admin",
+        "admin->data:prod-db-credentials"
+      ],
+      "effort": 13,
+      "impact": 10,
+      "risk": 15,
+      "likelihood": "Unlikely",
+      "description": "Internet \u2192 bastion-1 \u2192 bastion-role \u2192 web-prod-1 \u2192 web-app-role \u2192 deploy-role \u2192 Account administrator \u2192 prod-db-credentials"
+    },
+    {
+      "entry": "internet",
+      "target": "data:acme-finance-reports",
+      "edges": [
+        "internet->compute:bastion-1",
+        "compute:bastion-1->role:bastion-role",
+        "role:bastion-role->compute:batch-worker",
+        "compute:batch-worker->role:batch-role",
+        "role:batch-role->admin",
+        "admin->data:acme-finance-reports"
+      ],
+      "effort": 12,
+      "impact": 7,
+      "risk": 10,
+      "likelihood": "Unlikely",
+      "description": "Internet \u2192 bastion-1 \u2192 bastion-role \u2192 batch-worker \u2192 batch-role \u2192 Account administrator \u2192 acme-finance-reports"
+    },
+    {
+      "entry": "internet",
+      "target": "data:acme-finance-reports",
+      "edges": [
+        "internet->compute:bastion-1",
+        "compute:bastion-1->role:bastion-role",
+        "role:bastion-role->compute:web-prod-1",
+        "compute:web-prod-1->role:web-app-role",
+        "role:web-app-role->role:deploy-role",
+        "role:deploy-role->admin",
+        "admin->data:acme-finance-reports"
+      ],
+      "effort": 13,
+      "impact": 7,
+      "risk": 10,
+      "likelihood": "Unlikely",
+      "description": "Internet \u2192 bastion-1 \u2192 bastion-role \u2192 web-prod-1 \u2192 web-app-role \u2192 deploy-role \u2192 Account administrator \u2192 acme-finance-reports"
+    }
+  ],
+  "fix_plan": [
+    {
+      "edge": "internet->compute:web-prod-1",
+      "fix": "Upgrade django to 3.2.14 and pillow to 10.0.1 on web-prod-1 (2 exploitable CVEs), or remove internet access to port 443",
+      "paths_broken": 4,
+      "cumulative_pct": 24,
+      "risk_removed_pct": 38
+    },
+    {
+      "edge": "internet->compute:image-resizer",
+      "fix": "Upgrade pillow to 10.0.1 on image-resizer, or remove internet access to port 443",
+      "paths_broken": 2,
+      "cumulative_pct": 35,
+      "risk_removed_pct": 61
+    },
+    {
+      "edge": "internet->compute:bastion-1",
+      "fix": "Close port 22 to the internet; use SSM Session Manager and key-only auth",
+      "paths_broken": 8,
+      "cumulative_pct": 82,
+      "risk_removed_pct": 81
+    },
+    {
+      "edge": "leaked-key->user:ci-bot",
+      "fix": "Rotate and remove ci-bot's access key; use short-lived credentials (OIDC / IAM roles)",
+      "paths_broken": 2,
+      "cumulative_pct": 94,
+      "risk_removed_pct": 93
+    },
+    {
+      "edge": "external:444455556666->role:vendor-audit-role",
+      "fix": "Add an sts:ExternalId condition to vendor-audit-role's trust policy and trust a specific role ARN",
+      "paths_broken": 1,
+      "cumulative_pct": 100,
+      "risk_removed_pct": 100
+    }
+  ]
+}
