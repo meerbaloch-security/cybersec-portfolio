@@ -30,7 +30,7 @@ using live data. Results from **3 November 2026**:
 A few examples show why severity alone misleads:
 
 - **Pillow, CVE-2023-4863** (the libwebp heap overflow) has a CVSS of 8.8,
-  lower than dozens of other findings. But it is in **CISA KEV**, meaning it
+  lower than 19 Critical-rated findings in the same scan. But it is in **CISA KEV**, meaning it
   has been exploited in the wild, so it is ranked first.
 - **Django, CVE-2022-34265** (SQL injection, CVSS 9.8) has a **73.6% EPSS**
   score, so it goes to P1.

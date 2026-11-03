@@ -100,7 +100,7 @@ A dependency scanner that ranks vulnerabilities by real-world exploitation risk,
 
 - Scans Python `requirements.txt` and npm `package-lock.json` (v1–v3, including nested dependencies)
 - Live scan of 11 outdated Python packages: 177 vulnerabilities, 99 rated High/Critical, but only 12 needing immediate action (88% less urgent work)
-- Ranked a CISA KEV-listed Pillow vulnerability (CVE-2023-4863, CVSS 8.8) above dozens of CVSS 9.8 findings with low exploitation probability
+- Ranked a CISA KEV-listed Pillow vulnerability (CVE-2023-4863, CVSS 8.8) above 19 Critical-rated (CVSS 9+) findings in the same scan
 - Produces an upgrade plan with the smallest version that fixes each package's known issues
 - Built-in CVSS v3 calculator verified against reference vectors; offline unit tests use an injected fake network layer
 - Weekly scheduled live scan in GitHub Actions
