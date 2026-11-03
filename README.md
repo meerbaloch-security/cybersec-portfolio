@@ -73,6 +73,40 @@ A command-line tool that turns unstructured threat-intelligence reports into cle
 
 [View the project code and documentation →](project-03-ioc-extractor/)
 
+### [Project 04 — AWS IAM Policy Risk Analyzer](project-04-iam-policy-analyzer/)
+
+> **Status:** Complete
+
+An offline analyzer for AWS IAM policies and full account exports that finds who can become an administrator, even if they are not one today.
+
+### Key Results
+
+- Evaluates each user and role with all its permissions combined: inline, attached managed and group-inherited policies
+- Detects 21 known privilege-escalation paths, such as `iam:PassRole` + `ec2:RunInstances` and `iam:CreatePolicyVersion`
+- Handles AWS wildcard matching, `NotAction`/`NotResource` and explicit denies, and rates scoped permissions lower than account-wide ones
+- Flags wildcard and `NotAction` grants, public resource policies, risky trust policies and permissions that can disable CloudTrail or GuardDuty
+- On a fictional 9-principal account: 1 administrator on paper, but 3 more principals that can escalate to admin
+- Outputs SARIF for GitHub code scanning and a `--fail-on` CI gate
+
+[View the project code and documentation →](project-04-iam-policy-analyzer/)
+
+### [Project 05 — Risk-Based Vulnerability Prioritizer](project-05-vuln-prioritizer/)
+
+> **Status:** Complete
+
+A dependency scanner that ranks vulnerabilities by real-world exploitation risk, not severity alone, by combining OSV.dev, the CISA Known Exploited Vulnerabilities catalog and FIRST EPSS scores.
+
+### Key Results
+
+- Scans Python `requirements.txt` and npm `package-lock.json` (v1–v3, including nested dependencies)
+- Live scan of 11 outdated Python packages: 177 vulnerabilities, 99 rated High/Critical, but only 12 needing immediate action (88% less urgent work)
+- Ranked a CISA KEV-listed Pillow vulnerability (CVE-2023-4863, CVSS 8.8) above dozens of CVSS 9.8 findings with low exploitation probability
+- Produces an upgrade plan with the smallest version that fixes each package's known issues
+- Built-in CVSS v3 calculator verified against reference vectors; offline unit tests use an injected fake network layer
+- Weekly scheduled live scan in GitHub Actions
+
+[View the project code and documentation →](project-05-vuln-prioritizer/)
+
 ## Skills Demonstrated
 
 - Active Directory Domain Services and DNS administration
@@ -89,6 +123,8 @@ A command-line tool that turns unstructured threat-intelligence reports into cle
 - Email security analysis (SPF, DKIM, DMARC, phishing and BEC indicators)
 - Python security tooling, unit testing and GitHub Actions CI
 - Threat intelligence: IOC extraction, refanging and STIX 2.1
+- Cloud security: AWS IAM policy evaluation and privilege-escalation analysis
+- Vulnerability management: risk-based prioritization with CVSS, EPSS and CISA KEV
 
 ## Portfolio Direction
 

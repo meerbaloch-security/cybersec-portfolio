@@ -1,0 +1,14 @@
+# Intentionally OUTDATED versions of real, popular packages, pinned to show
+# what a forgotten requirements file looks like. Do not install these.
+django==3.2.0
+flask==0.12.2
+jinja2==2.10
+requests==2.19.1
+urllib3==1.24.1
+pyyaml==5.3
+pillow==8.0.0
+cryptography==3.2
+paramiko==2.4.1
+werkzeug==0.15.3
+sqlparse==0.4.1
+numpy>=1.20        # unpinned: skipped, cannot match to one version
