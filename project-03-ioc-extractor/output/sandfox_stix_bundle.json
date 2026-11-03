@@ -1,0 +1,549 @@
+{
+  "type": "bundle",
+  "id": "bundle--ab38bb65-00e1-4f2b-8282-bc76c29cae5d",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "name": "ioc-extractor",
+      "identity_class": "system"
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d96b4c21-2648-54a8-a2e0-cdca75d95b1a",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "ipv4: 203.0.113.45",
+      "description": "| C2 server | 203.0.113.45 |",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '203.0.113.45']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--b5a63372-abd5-52e3-9221-03fc9b0e5415",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "ipv4: 198.51.100.23",
+      "description": "| C2 server (backup) | 198.51.100.23 |",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '198.51.100.23']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--aeb31885-3299-5922-8899-0b3f7d7f9c18",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "ipv4: 192.0.2.77",
+      "description": "| Payload host | http://192.0.2.77/files/invoice_viewer.exe |",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[ipv4-addr:value = '192.0.2.77']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--04f07589-d79d-5469-9237-2d7d84897347",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "ipv6: 2001:db8:4f2a::17",
+      "description": "| IPv6 C2 | 2001:db8:4f2a::17 |",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[ipv6-addr:value = '2001:db8:4f2a::17']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--f41ba503-a5c1-56cb-89ae-bf1a2d23cd60",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "domain: docs-share-portal.xyz",
+      "description": "https://docs-share-portal.xyz/view?id=44812",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'docs-share-portal.xyz']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--612cec2d-a67a-51b0-a12d-f90b8edfecd7",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "domain: quick-freight-billing.top",
+      "description": "| Phishing domain | quick-freight-billing.top |",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'quick-freight-billing.top']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3887a55d-9ae8-5c86-8fec-0e7e96fe1250",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "domain: cdn-update-sync.com",
+      "description": "| Staging domain | cdn-update-sync.com |",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'cdn-update-sync.com']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--216390d5-e899-56c7-9f31-3dcb8b5bef67",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "domain: logistics-tracking.online",
+      "description": "The actors also registered logistics-tracking.online and briefly used",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'logistics-tracking.online']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--10cff2c3-6ff7-5b77-babd-5151498b812f",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "domain: bit.ly",
+      "description": "a short link at https://bit.ly/sandfox-inv that redirected to the portal.",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'bit.ly']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5108a3b1-e540-5719-886f-5f49cdeed0cf",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "domain: invoice-portal.zip",
+      "description": "and one phishing kit page used the domain invoice-portal.zip.",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[domain-name:value = 'invoice-portal.zip']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--734847d8-cf58-5ba2-8d2c-d6dad2a683b9",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "url: https://docs-share-portal.xyz/view?id=44812",
+      "description": "https://docs-share-portal.xyz/view?id=44812. Victims who open the attached",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[url:value = 'https://docs-share-portal.xyz/view?id=44812']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--c892b231-d4d9-5963-8dde-adeb30adf47e",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "url: http://192.0.2.77/files/invoice_viewer.exe",
+      "description": "| Payload host | http://192.0.2.77/files/invoice_viewer.exe |",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[url:value = 'http://192.0.2.77/files/invoice_viewer.exe']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--7d3d785e-21f7-5499-b4f3-7bde46e51543",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "url: https://bit.ly/sandfox-inv",
+      "description": "a short link at https://bit.ly/sandfox-inv that redirected to the portal.",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[url:value = 'https://bit.ly/sandfox-inv']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--cf179836-5733-59b8-8bfe-8001ab9047c5",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "url: https://cdn-update-sync.com/dl/payload.zip",
+      "description": "Archive payloads were hosted at https://cdn-update-sync.com/dl/payload.zip,",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[url:value = 'https://cdn-update-sync.com/dl/payload.zip']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--138e4bb3-80c2-52df-97c4-067854518d09",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "email: billing@quick-freight-billing.top",
+      "description": "billing@quick-freight-billing.top and link to a fake document portal at",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[email-addr:value = 'billing@quick-freight-billing.top']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--ceefe622-203b-5536-a75c-9415847a732b",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "md5: 7ba4d347974e4707070b179db633dff8",
+      "description": "7ba4d347974e4707070b179db633dff8.",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[file:hashes.MD5 = '7ba4d347974e4707070b179db633dff8']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--98878bf8-7a0c-5289-8dd9-d8b69c490ac8",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "sha1: b9caa74cc372fc23768a87ce00a61a197b7ce399",
+      "description": "The loader's SHA-1 is b9caa74cc372fc23768a87ce00a61a197b7ce399 and its MD5 is",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[file:hashes.'SHA-1' = 'b9caa74cc372fc23768a87ce00a61a197b7ce399']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--3a53cfd9-1578-5b10-9810-5da3f1352840",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "sha256: 424c06f6bb950f45d28ec624fbb3c2788259bc95bd6dc6075db1faa73c38fc98",
+      "description": "| Invoice_88231.pdf.exe (loader) | 424c06f6bb950f45d28ec624fbb3c2788259bc95bd6dc6075db1faa73c38fc98 |",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[file:hashes.'SHA-256' = '424c06f6bb950f45d28ec624fbb3c2788259bc95bd6dc6075db1faa73c38fc98']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--89aaa7c8-b6b0-5d3a-b2e7-cfd08c695009",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "sha256: 5ea7549a4e8cadde2656db885741c15252114e36834b640d209291db4acdfc81",
+      "description": "| statement.xlsm (macro document) | 5ea7549a4e8cadde2656db885741c15252114e36834b640d209291db4acdfc81 |",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[file:hashes.'SHA-256' = '5ea7549a4e8cadde2656db885741c15252114e36834b640d209291db4acdfc81']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--5d1d1fa0-f817-5e28-80a3-758f429180db",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "sha256: 5e68f6984e5c7f8816462018f6dcab421d5f5e2a3d826f0cbfb8461bb439c8b5",
+      "description": "| sync.dll (second stage) | 5e68f6984e5c7f8816462018f6dcab421d5f5e2a3d826f0cbfb8461bb439c8b5 |",
+      "indicator_types": [
+        "malicious-activity"
+      ],
+      "pattern": "[file:hashes.'SHA-256' = '5e68f6984e5c7f8816462018f6dcab421d5f5e2a3d826f0cbfb8461bb439c8b5']",
+      "pattern_type": "stix",
+      "valid_from": "2026-11-03T08:21:51.000Z",
+      "external_references": [
+        {
+          "source_name": "source-report",
+          "description": "sandfox_report.md"
+        }
+      ]
+    },
+    {
+      "type": "vulnerability",
+      "spec_version": "2.1",
+      "id": "vulnerability--9d101f04-54d9-55c8-8c2a-4b27411dd443",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "CVE-2023-23397",
+      "external_references": [
+        {
+          "source_name": "cve",
+          "external_id": "CVE-2023-23397"
+        }
+      ]
+    },
+    {
+      "type": "vulnerability",
+      "spec_version": "2.1",
+      "id": "vulnerability--851e1811-82f9-5fdd-8c11-d39d0cabda7a",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "CVE-2024-21413",
+      "external_references": [
+        {
+          "source_name": "cve",
+          "external_id": "CVE-2024-21413"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--a8ab2940-e019-595e-82a7-c5b186098caa",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "T1566.001",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1566.001",
+          "url": "https://attack.mitre.org/techniques/T1566/001/"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--90509550-8b7c-5049-aa8c-e47e057743f4",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "T1059.001",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1059.001",
+          "url": "https://attack.mitre.org/techniques/T1059/001/"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--5e80af55-7dcf-5491-bfa1-0b21ab3ee028",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "T1071.001",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1071.001",
+          "url": "https://attack.mitre.org/techniques/T1071/001/"
+        }
+      ]
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--4b6cfb83-2bf7-5378-b224-149a87810ec5",
+      "created": "2026-11-03T08:21:51.000Z",
+      "modified": "2026-11-03T08:21:51.000Z",
+      "created_by_ref": "identity--92fd60d2-4c32-5f8f-a9c1-393e2fba51aa",
+      "name": "T1041",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1041",
+          "url": "https://attack.mitre.org/techniques/T1041/"
+        }
+      ]
+    }
+  ]
+}

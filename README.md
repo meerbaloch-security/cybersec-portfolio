@@ -56,6 +56,23 @@ An offline Python tool that triages suspicious `.eml` files and produces an anal
 
 [View the project code and documentation →](project-02-phishing-email-analyzer/)
 
+### [Project 03 — Threat Intel IOC Extractor](project-03-ioc-extractor/)
+
+> **Status:** Complete
+
+A command-line tool that turns unstructured threat-intelligence reports into clean, de-duplicated indicators of compromise and exports them for security tools, including as a STIX 2.1 bundle for threat-intel platforms.
+
+### Key Results
+
+- Refangs common obfuscation styles (`hxxp`, `[.]`, `(.)`, `[dot]`, `[at]`) before extraction
+- Extracts 10 indicator types: IPv4, IPv6, domains, URLs, email addresses, MD5/SHA-1/SHA-256 hashes, CVEs and MITRE ATT&CK technique IDs
+- Filters noise such as private IPs, benign reference domains, file names that look like domains, and version strings that look like IPs
+- Exports to text, JSON, CSV, defanged Markdown and STIX 2.1 (indicators, vulnerabilities and attack patterns, with deterministic IDs)
+- Extracted all 26 planted indicators from a fictional threat brief while ignoring all 10 planted noise values
+- Builds on the threat-indicator backend I developed for the ThreatLens capstone project
+
+[View the project code and documentation →](project-03-ioc-extractor/)
+
 ## Skills Demonstrated
 
 - Active Directory Domain Services and DNS administration
@@ -71,6 +88,7 @@ An offline Python tool that triages suspicious `.eml` files and produces an anal
 - Security evidence collection and technical documentation
 - Email security analysis (SPF, DKIM, DMARC, phishing and BEC indicators)
 - Python security tooling, unit testing and GitHub Actions CI
+- Threat intelligence: IOC extraction, refanging and STIX 2.1
 
 ## Portfolio Direction
 

@@ -1,0 +1,27 @@
+type,value,defanged,context
+ipv4,203.0.113.45,203[.]0[.]113[.]45,| C2 server | 203.0.113.45 |
+ipv4,198.51.100.23,198[.]51[.]100[.]23,| C2 server (backup) | 198.51.100.23 |
+ipv4,192.0.2.77,192[.]0[.]2[.]77,| Payload host | http://192.0.2.77/files/invoice_viewer.exe |
+ipv6,2001:db8:4f2a::17,2001[:]db8[:]4f2a[:][:]17,| IPv6 C2 | 2001:db8:4f2a::17 |
+domain,docs-share-portal.xyz,docs-share-portal[.]xyz,https://docs-share-portal.xyz/view?id=44812
+domain,quick-freight-billing.top,quick-freight-billing[.]top,| Phishing domain | quick-freight-billing.top |
+domain,cdn-update-sync.com,cdn-update-sync[.]com,| Staging domain | cdn-update-sync.com |
+domain,logistics-tracking.online,logistics-tracking[.]online,The actors also registered logistics-tracking.online and briefly used
+domain,bit.ly,bit[.]ly,a short link at https://bit.ly/sandfox-inv that redirected to the portal.
+domain,invoice-portal.zip,invoice-portal[.]zip,and one phishing kit page used the domain invoice-portal.zip.
+url,https://docs-share-portal.xyz/view?id=44812,hxxps[://]docs-share-portal[.]xyz/view?id=44812,https://docs-share-portal.xyz/view?id=44812. Victims who open the attached
+url,http://192.0.2.77/files/invoice_viewer.exe,hxxp[://]192[.]0[.]2[.]77/files/invoice_viewer[.]exe,| Payload host | http://192.0.2.77/files/invoice_viewer.exe |
+url,https://bit.ly/sandfox-inv,hxxps[://]bit[.]ly/sandfox-inv,a short link at https://bit.ly/sandfox-inv that redirected to the portal.
+url,https://cdn-update-sync.com/dl/payload.zip,hxxps[://]cdn-update-sync[.]com/dl/payload[.]zip,"Archive payloads were hosted at https://cdn-update-sync.com/dl/payload.zip,"
+email,billing@quick-freight-billing.top,billing[@]quick-freight-billing[.]top,billing@quick-freight-billing.top and link to a fake document portal at
+md5,7ba4d347974e4707070b179db633dff8,7ba4d347974e4707070b179db633dff8,7ba4d347974e4707070b179db633dff8.
+sha1,b9caa74cc372fc23768a87ce00a61a197b7ce399,b9caa74cc372fc23768a87ce00a61a197b7ce399,The loader's SHA-1 is b9caa74cc372fc23768a87ce00a61a197b7ce399 and its MD5 is
+sha256,424c06f6bb950f45d28ec624fbb3c2788259bc95bd6dc6075db1faa73c38fc98,424c06f6bb950f45d28ec624fbb3c2788259bc95bd6dc6075db1faa73c38fc98,| Invoice_88231.pdf.exe (loader) | 424c06f6bb950f45d28ec624fbb3c2788259bc95bd6dc6075db1faa73c38fc98 |
+sha256,5ea7549a4e8cadde2656db885741c15252114e36834b640d209291db4acdfc81,5ea7549a4e8cadde2656db885741c15252114e36834b640d209291db4acdfc81,| statement.xlsm (macro document) | 5ea7549a4e8cadde2656db885741c15252114e36834b640d209291db4acdfc81 |
+sha256,5e68f6984e5c7f8816462018f6dcab421d5f5e2a3d826f0cbfb8461bb439c8b5,5e68f6984e5c7f8816462018f6dcab421d5f5e2a3d826f0cbfb8461bb439c8b5,| sync.dll (second stage) | 5e68f6984e5c7f8816462018f6dcab421d5f5e2a3d826f0cbfb8461bb439c8b5 |
+cve,CVE-2023-23397,CVE-2023-23397,"CVE-2023-23397 in Microsoft Outlook, and one victim was hit via CVE-2024-21413."
+cve,CVE-2024-21413,CVE-2024-21413,"CVE-2023-23397 in Microsoft Outlook, and one victim was hit via CVE-2024-21413."
+attack_technique,T1566.001,T1566.001,"Initial access uses spearphishing attachments (T1566.001), and the loader runs"
+attack_technique,T1059.001,T1059.001,through PowerShell (T1059.001)
+attack_technique,T1071.001,T1071.001,"C2 traffic uses HTTPS (T1071.001), and the group"
+attack_technique,T1041,T1041,exfiltrates data over the same channel (T1041)

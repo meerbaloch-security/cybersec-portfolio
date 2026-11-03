@@ -1,0 +1,28 @@
+name: project-03 ioc-extractor tests
+
+on:
+  push:
+    paths: ["project-03-ioc-extractor/**", ".github/workflows/project-03-tests.yml"]
+  pull_request:
+    paths: ["project-03-ioc-extractor/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    defaults:
+      run:
+        working-directory: project-03-ioc-extractor
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m unittest discover -s tests -v
+      - name: Demo run on sample report
+        run: python ioc_extractor.py samples/sandfox_report.md --format stix -o /tmp/bundle.json
