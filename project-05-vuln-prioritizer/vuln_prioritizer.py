@@ -272,6 +272,8 @@ def fixed_versions(vuln: dict, pkg: Package) -> list[str]:
                 (pkg.name if pkg.ecosystem == "PyPI" else ap.get("name", "")).lower():
             continue
         for r in a.get("ranges", []):
+            if r.get("type") == "GIT":
+                continue  # commit hashes, not installable versions
             out += [e["fixed"] for e in r.get("events", []) if "fixed" in e]
     return sorted(set(out), key=_version_key)
 
@@ -328,6 +330,12 @@ def analyse(pkgs: list[Package], fetch: Fetch = http_fetch) -> list[Finding]:
     return findings
 
 
+def next_fix(f: Finding) -> str | None:
+    """Smallest fixed version newer than the one installed."""
+    newer = [v for v in f.fixed_versions if _version_key(v) > _version_key(f.version)]
+    return newer[0] if newer else None
+
+
 def upgrade_plan(findings: list[Finding]) -> list[dict]:
     """Smallest upgrade per package that fixes everything we know a fix for."""
     plan: dict[str, dict] = {}
@@ -335,11 +343,11 @@ def upgrade_plan(findings: list[Finding]) -> list[dict]:
         p = plan.setdefault(f.package, {"package": f.package, "current": f.version, "target": None,
                                         "fixes": 0, "worst_tier": f.tier, "no_fix": 0})
         p["worst_tier"] = min(p["worst_tier"], f.tier)
-        newer = [v for v in f.fixed_versions if _version_key(v) > _version_key(f.version)]
-        if newer:
+        fix = next_fix(f)
+        if fix:
             p["fixes"] += 1
-            if p["target"] is None or _version_key(newer[0]) > _version_key(p["target"]):
-                p["target"] = newer[0]
+            if p["target"] is None or _version_key(fix) > _version_key(p["target"]):
+                p["target"] = fix
         else:
             p["no_fix"] += 1
     return sorted(plan.values(), key=lambda p: (p["worst_tier"], p["package"]))
@@ -374,7 +382,7 @@ def to_text(findings: list[Finding], pkgs: list[Package], skipped: list[str]) ->
     for f in findings:
         out.append(f"{f.tier:<5}{(f.package + ' ' + f.version)[:21]:<22}{f.vuln_id[:21]:<22}"
                    f"{(f.cves[0] if f.cves else '-'):<17}{(f'{f.cvss:.1f}' if f.cvss is not None else '-'):>5}"
-                   f"{_pct(f.epss):>9}  {'YES' if f.in_kev else '   '}  {f.fixed_versions[-1] if f.fixed_versions else 'none'}")
+                   f"{_pct(f.epss):>9}  {'YES' if f.in_kev else '   '}  {next_fix(f) or 'none'}")
     if skipped:
         out += ["", f"Skipped {len(skipped)} unpinned requirement(s): {', '.join(skipped)}"]
     return "\n".join(out)
@@ -395,14 +403,14 @@ def to_markdown(findings: list[Finding], pkgs: list[Package], skipped: list[str]
         out.append(f"| {p['package']} | {p['current']} | **{target}** | {p['fixes']}"
                    + (f" ({p['no_fix']} without fix)" if p["no_fix"] else "") + f" | {p['worst_tier']} |")
     out += ["", "## All findings", "",
-            "| Tier | Package | Advisory | CVE | CVSS | EPSS (percentile) | KEV | Why this tier |",
-            "|---|---|---|---|---|---|---|---|"]
+            "| Tier | Package | Advisory | CVE | CVSS | EPSS (percentile) | KEV | Fixed in | Why this tier |",
+            "|---|---|---|---|---|---|---|---|---|"]
     for f in findings:
         kev = ("**Yes**" + (" (ransomware)" if f.ransomware else "")) if f.in_kev else "No"
         pct = f" ({f.epss_percentile:.0%})" if f.epss_percentile is not None else ""
         out.append(f"| {f.tier} | {f.package} {f.version} | [{f.vuln_id}](https://osv.dev/vulnerability/{f.vuln_id}) | "
                    f"{', '.join(f.cves) or '-'} | {f'{f.cvss:.1f}' if f.cvss is not None else '-'} | "
-                   f"{_pct(f.epss)}{pct} | {kev} | {f.reason} |")
+                   f"{_pct(f.epss)}{pct} | {kev} | {next_fix(f) or '-'} | {f.reason} |")
     if skipped:
         out += ["", f"_Skipped {len(skipped)} unpinned requirement(s): {', '.join(f'`{x}`' for x in skipped)}._"]
     out += ["", "---", "Data: [OSV.dev](https://osv.dev), [CISA KEV](https://www.cisa.gov/known-exploited-vulnerabilities-catalog), "
