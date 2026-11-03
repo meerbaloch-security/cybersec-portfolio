@@ -1,0 +1,55 @@
+name: project-05 vuln-prioritizer
+
+on:
+  push:
+    paths: ["project-05-vuln-prioritizer/**", ".github/workflows/project-05-tests.yml"]
+  pull_request:
+    paths: ["project-05-vuln-prioritizer/**"]
+  schedule:
+    - cron: "17 3 * * 1"   # weekly live scan: vulnerability data changes every day
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    defaults:
+      run:
+        working-directory: project-05-vuln-prioritizer
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: python -m unittest discover -s tests -v
+
+  live-scan:
+    needs: test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: project-05-vuln-prioritizer
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Scan sample dependencies with live OSV, KEV and EPSS data
+        run: |
+          mkdir -p live
+          python vuln_prioritizer.py samples/requirements.txt --cache .cache
+          python vuln_prioritizer.py samples/requirements.txt --cache .cache --format markdown -o live/requirements_report.md
+          python vuln_prioritizer.py samples/requirements.txt --cache .cache --format json -o live/requirements_report.json
+          python vuln_prioritizer.py samples/package-lock.json --cache .cache
+          python vuln_prioritizer.py samples/package-lock.json --cache .cache --format markdown -o live/npm_report.md
+          python vuln_prioritizer.py samples/package-lock.json --cache .cache --format json -o live/npm_report.json
+          cat live/requirements_report.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: live-reports
+          path: project-05-vuln-prioritizer/live/
